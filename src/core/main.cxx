@@ -11,10 +11,19 @@
 
 using namespace TitanOfAir;
 
+/**
+ *
+ * @return
+ *      0  = Success.
+ *      -1 = GLFW failure.
+ *      -2 = OpenGL failure.
+ */
 int main()
 {
     logging::configureLoggers();
     spdlog::get("TitanOfAir")->info("Starting TitanOfAir v0.0.0-alpha.");
+
+    // Configure OpenGL Runtime.
     auto window = graphics::configureGLFW();
     if (!window) return -1;
     int glVersion = gladLoadGL();
@@ -28,6 +37,16 @@ int main()
     glGetIntegerv(GL_MAJOR_VERSION, &verMajor);
     glGetIntegerv(GL_MINOR_VERSION, &verMinor);
     spdlog::get("TitanOfAir")->info("Loaded OpenGL {}.{}.", verMajor, verMinor);
+
+    // Start Game Logic.
+
+    // ...
+
+    // End Game Logic.
+
+    // ...
+
+    // Terminate the program!
     glfwTerminate();
     return 0;
 }
