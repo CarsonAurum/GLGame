@@ -1,2 +1,4 @@
-set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/)
-set(TOA_SRCS ${SRC_DIR}main.cxx ${SRC_DIR}debugGL.cxx PARENT_SCOPE)
+file(GLOB APP_SRCS app/*.cxx)
+file(GLOB CORE_SRCS core/*.cxx)
+file(GLOB DEBUG_SRCS debug/*.cxx)
+set(TOA_SRCS ${APP_SRCS} ${CORE_SRCS} ${DEBUG_SRCS} PARENT_SCOPE)

@@ -3,7 +3,11 @@
 //
 
 #include <cstdlib>
-/*
+#include <glad/glad.h>
+#include <spdlog/spdlog.h>
+#include "debug/debugGL.hxx"
+
+
 namespace TitanOfAir::utils
 {
     void glPrintShaderLogs(GLuint shader)
@@ -19,5 +23,14 @@ namespace TitanOfAir::utils
             free(log);
         }
     }
+
+    void utils::glPrintProgramLog (GLuint program)
+    {
+
+    }
+
+    bool glCheckError ()
+    {
+        return false;
+    }
 }
- */
