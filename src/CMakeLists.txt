@@ -1,0 +1,2 @@
+set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/)
+set(TOA_SRCS ${SRC_DIR}main.cxx ${SRC_DIR}debugGL.cxx PARENT_SCOPE)

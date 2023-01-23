@@ -4,8 +4,10 @@ project(TitanOfAir)
 set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(lib)
+add_subdirectory(inc)
+add_subdirectory(src)
 
-add_executable(TitanOfAir main.cpp)
+add_executable(TitanOfAir ${TOA_HEADERS} ${TOA_SRCS})
 
 target_link_libraries(TitanOfAir PRIVATE ${GLAD_LIBRARIES} ${GLFW_LIBRARIES} ${SOIL_LIBRARIES})
 target_link_libraries(TitanOfAir PRIVATE ${GLM_LIBRARIES} ${OPUS_LIBRARIES} ${SPDLOG_LIBRARIES})
