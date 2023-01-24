@@ -5,6 +5,8 @@
 #ifndef TITANOFAIR_APP_HXX
 #define TITANOFAIR_APP_HXX
 
+#include <vector>
+
 namespace TitanOfAir
 {
     class App
@@ -12,9 +14,13 @@ namespace TitanOfAir
     public:
         App(App&) = delete;
         void operator =(const App&) = delete;
+        ~App() = delete;
         static App* getInstance();
     protected:
         App();
+    private:
+        std::vector<char*> entities;
+        std::vector<char*> components;
     };
 }
 
