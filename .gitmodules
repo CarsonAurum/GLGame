@@ -13,3 +13,15 @@
 [submodule "lib/SOIL2"]
 	path = lib/SOIL2
 	url = https://github.com/SpartanJ/SOIL2.git
+[submodule "lib/boost/uuid"]
+	path = lib/boost/uuid
+	url = https://github.com/boostorg/uuid.git
+[submodule "lib/boost/core"]
+	path = lib/boost/core
+	url = https://github.com/boostorg/core.git
+[submodule "lib/boost/assert"]
+	path = lib/boost/assert
+	url = https://github.com/boostorg/assert.git
+[submodule "lib/boost/config"]
+	path = lib/boost/config
+	url = https://github.com/boostorg/config.git
