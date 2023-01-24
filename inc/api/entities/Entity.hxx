@@ -12,7 +12,7 @@
 namespace TitanOfAir
 {
     /**
-     * An abstract superclass representing an entity in the TitanOfAir ECS
+     * An abstract superclass representing an entities in the TitanOfAir ECS
      * system.
      */
     class Entity
@@ -27,7 +27,7 @@ namespace TitanOfAir
          * The copy constructor for copying this object.
          * @note This must be implemented by all subclasses.
          * @param copy The component whose data should be copied, leaving the
-         * given entity unchanged.
+         * given entities unchanged.
          */
         Entity(const Entity& copy) = delete;
         /**

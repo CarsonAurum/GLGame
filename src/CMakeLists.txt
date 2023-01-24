@@ -1,4 +1,4 @@
-file(GLOB API_SRCS api/*.cxx)
+file(GLOB API_SRCS api/*.cxx api/components/*.cxx api/entities/*.cxx)
 file(GLOB APP_SRCS app/*.cxx)
 file(GLOB CORE_SRCS core/*.cxx)
 file(GLOB DEBUG_SRCS debug/*.cxx)
