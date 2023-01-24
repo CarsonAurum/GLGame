@@ -14,6 +14,8 @@ add_subdirectory(conversion)
 
 add_subdirectory(core)
 
+add_subdirectory(detail)
+
 add_subdirectory(describe)
 
 add_subdirectory(dynamic_bitset)
@@ -25,6 +27,8 @@ add_subdirectory(integer)
 add_subdirectory(intrusive)
 
 add_subdirectory(io)
+
+add_subdirectory(iterator)
 
 add_subdirectory(move)
 
@@ -56,18 +60,15 @@ add_subdirectory(tuple)
 
 add_subdirectory(type_traits)
 
+add_subdirectory(typeof)
+
 add_subdirectory(utility)
 
 add_subdirectory(uuid)
+set(UUID_INC uuid/include)
+set(UUID_LIB boost_uuid)
 
 add_subdirectory(winapi)
 
-set(BOOST_INCLUDE_DIRS
-        ${ASSERT_INC} ${CONFIG_INC} ${CONTAINER_INC} ${CORE_INC} ${INTRUSIVE_INC} ${IO_INC}
-        ${MOVE_INC}
-        PARENT_SCOPE)
-set(BOOST_LIBRARIES
-        ${ASSERT_LIB} ${CONFIG_LIB} ${CONTAINER_LIB} ${CORE_LIB} ${INTRUSIVE_LIB} ${IO_LIB}
-
-        ${MOVE_LIB}
-        PARENT_SCOPE)
+set(BOOST_INCLUDE_DIRS ${UUID_INC} PARENT_SCOPE)
+set(BOOST_LIBRARIES ${UUID_LIB} PARENT_SCOPE)

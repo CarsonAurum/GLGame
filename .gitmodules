@@ -109,3 +109,15 @@
 [submodule "lib/boost/conversion"]
 	path = lib/boost/conversion
 	url = https://github.com/boostorg/conversion.git
+[submodule "lib/boost/typeof"]
+	path = lib/boost/typeof
+	url = https://github.com/boostorg/typeof.git
+[submodule "lib/boost/detail"]
+	path = lib/boost/detail
+	url = https://github.com/boostorg/detail.git
+[submodule "lib/boost/iterator"]
+	path = lib/boost/iterator
+	url = https://github.com/boostorg/iterator.git
+[submodule "lib/boost/function_types"]
+	path = lib/boost/function_types
+	url = https://github.com/boostorg/function_types.git
