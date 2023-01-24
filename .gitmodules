@@ -25,3 +25,9 @@
 [submodule "lib/boost/config"]
 	path = lib/boost/config
 	url = https://github.com/boostorg/config.git
+[submodule "lib/boost/container"]
+	path = lib/boost/container
+	url = https://github.com/boostorg/container.git
+[submodule "lib/boost/container_hash"]
+	path = lib/boost/container_hash
+	url = https://github.com/boostorg/container_hash.git
