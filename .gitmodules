@@ -43,3 +43,33 @@
 [submodule "lib/boost/numeric_conversion"]
 	path = lib/boost/numeric_conversion
 	url = https://github.com/boostorg/numeric_conversion.git
+[submodule "lib/boost/intrusive"]
+	path = lib/boost/intrusive
+	url = https://github.com/boostorg/intrusive.git
+[submodule "lib/boost/predef"]
+	path = lib/boost/predef
+	url = https://github.com/boostorg/predef.git
+[submodule "lib/boost/preprocessor"]
+	path = lib/boost/preprocessor
+	url = https://github.com/boostorg/preprocessor.git
+[submodule "lib/boost/random"]
+	path = lib/boost/random
+	url = https://github.com/boostorg/random.git
+[submodule "lib/boost/serialization"]
+	path = lib/boost/serialization
+	url = https://github.com/boostorg/serialization.git
+[submodule "lib/boost/static_assert"]
+	path = lib/boost/static_assert
+	url = https://github.com/boostorg/static_assert.git
+[submodule "lib/boost/throw_exception"]
+	path = lib/boost/throw_exception
+	url = https://github.com/boostorg/throw_exception.git
+[submodule "lib/boost/tti"]
+	path = lib/boost/tti
+	url = https://github.com/boostorg/tti.git
+[submodule "lib/boost/type_traits"]
+	path = lib/boost/type_traits
+	url = https://github.com/boostorg/type_traits.git
+[submodule "lib/boost/winapi"]
+	path = lib/boost/winapi
+	url = https://github.com/boostorg/winapi.git
