@@ -5,9 +5,6 @@
 #ifndef TITANOFAIR_COMPONENT_HXX
 #define TITANOFAIR_COMPONENT_HXX
 
-#include <uuid_v4.h>
-#include <endianness.h>
-
 namespace TitanOfAir
 {
     /**
@@ -40,10 +37,6 @@ namespace TitanOfAir
         Component(Component&& move) = delete;
         virtual ~Component() = delete;
     private:
-        /**
-         * The id of this component.
-         */
-        UUIDv4::UUID id;
     };
 }
 

@@ -5,10 +5,9 @@
 #ifndef TITANOFAIR_ENTITY_HXX
 #define TITANOFAIR_ENTITY_HXX
 
-#include <uuid_v4.h>
-#include <endianness.h>
-#include "API_ERRORS.hxx"
-#include "Component.hxx"
+#include <memory>
+#include "api/API_ERRORS.hxx"
+#include "api/components/Component.hxx"
 
 namespace TitanOfAir
 {
@@ -40,9 +39,7 @@ namespace TitanOfAir
          * its destructor.
          */
         Entity(Entity&& move) = delete;
-        virtual ~Entity() = delete;
-    private:
-        UUIDv4::UUID id;
+        virtual ~Entity() = default;
     };
 }
 

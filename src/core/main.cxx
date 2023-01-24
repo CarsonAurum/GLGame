@@ -5,9 +5,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <spdlog/spdlog.h>
-#include <spdlog/sinks/stdout_color_sinks.h>
 #include "app/GLApp.hxx"
 #include "debug/Logging.hxx"
+#include "api/entities/Entity.hxx"
 
 using namespace TitanOfAir;
 

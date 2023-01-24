@@ -7,7 +7,15 @@
 
 namespace TitanOfAir
 {
-
+    class App
+    {
+    public:
+        App(App&) = delete;
+        void operator =(const App&) = delete;
+        static App* getInstance();
+    protected:
+        App();
+    };
 }
 
 #endif //TITANOFAIR_APP_HXX
