@@ -5,7 +5,9 @@
 #ifndef TITANOFAIR_ENTITY_HXX
 #define TITANOFAIR_ENTITY_HXX
 
-#include <memory>
+// Libs
+#include <boost/uuid/uuid.hpp>
+// Local
 #include "api/API_ERRORS.hxx"
 #include "api/components/Component.hxx"
 
@@ -40,6 +42,8 @@ namespace TitanOfAir
          */
         Entity(Entity&& move) = delete;
         virtual ~Entity() = default;
+    protected:
+        boost::uuids::uuid id;
     };
 }
 

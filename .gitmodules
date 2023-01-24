@@ -121,3 +121,81 @@
 [submodule "lib/boost/function_types"]
 	path = lib/boost/function_types
 	url = https://github.com/boostorg/function_types.git
+[submodule "lib/boost/mpl"]
+	path = lib/boost/mpl
+	url = https://github.com/boostorg/mpl.git
+[submodule "lib/boost/fusion"]
+	path = lib/boost/fusion
+	url = https://github.com/boostorg/fusion.git
+[submodule "lib/boost/functional"]
+	path = lib/boost/functional
+	url = https://github.com/boostorg/functional.git
+[submodule "lib/boost/function"]
+	path = lib/boost/function
+	url = https://github.com/boostorg/function.git
+[submodule "lib/boost/bind"]
+	path = lib/boost/bind
+	url = https://github.com/boostorg/bind.git
+[submodule "lib/boost/type_index"]
+	path = lib/boost/type_index
+	url = https://github.com/boostorg/type_index.git
+[submodule "lib/boost/optional"]
+	path = lib/boost/optional
+	url = https://github.com/boostorg/optional.git
+[submodule "lib/boost/regex"]
+	path = lib/boost/regex
+	url = https://github.com/boostorg/regex.git
+[submodule "lib/boost/spirit"]
+	path = lib/boost/spirit
+	url = https://github.com/boostorg/spirit.git
+[submodule "lib/boost/unordered"]
+	path = lib/boost/unordered
+	url = https://github.com/boostorg/unordered.git
+[submodule "lib/boost/variant"]
+	path = lib/boost/variant
+	url = https://github.com/boostorg/variant.git
+[submodule "lib/boost/endian"]
+	path = lib/boost/endian
+	url = https://github.com/boostorg/endian.git
+[submodule "lib/boost/phoenix"]
+	path = lib/boost/phoenix
+	url = https://github.com/boostorg/phoenix.git
+[submodule "lib/boost/proto"]
+	path = lib/boost/proto
+	url = https://github.com/boostorg/proto.git
+[submodule "lib/boost/pool"]
+	path = lib/boost/pool
+	url = https://github.com/boostorg/pool.git
+[submodule "lib/boost/thread"]
+	path = lib/boost/thread
+	url = https://github.com/boostorg/thread.git
+[submodule "lib/boost/variant2"]
+	path = lib/boost/variant2
+	url = https://github.com/boostorg/variant2.git
+[submodule "lib/boost/atomic"]
+	path = lib/boost/atomic
+	url = https://github.com/boostorg/atomic.git
+[submodule "lib/boost/align"]
+	path = lib/boost/align
+	url = https://github.com/boostorg/align.git
+[submodule "lib/boost/chrono"]
+	path = lib/boost/chrono
+	url = https://github.com/boostorg/chrono.git
+[submodule "lib/boost/ratio"]
+	path = lib/boost/ratio
+	url = https://github.com/boostorg/ratio.git
+[submodule "lib/boost/rational"]
+	path = lib/boost/rational
+	url = https://github.com/boostorg/rational.git
+[submodule "lib/boost/date_time"]
+	path = lib/boost/date_time
+	url = https://github.com/boostorg/date_time.git
+[submodule "lib/boost/algorithm"]
+	path = lib/boost/algorithm
+	url = https://github.com/boostorg/algorithm.git
+[submodule "lib/boost/lexical_cast"]
+	path = lib/boost/lexical_cast
+	url = https://github.com/boostorg/lexical_cast.git
+[submodule "lib/boost/tokenizer"]
+	path = lib/boost/tokenizer
+	url = https://github.com/boostorg/tokenizer.git
