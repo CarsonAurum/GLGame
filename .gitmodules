@@ -73,3 +73,39 @@
 [submodule "lib/boost/winapi"]
 	path = lib/boost/winapi
 	url = https://github.com/boostorg/winapi.git
+[submodule "lib/boost/describe"]
+	path = lib/boost/describe
+	url = https://github.com/boostorg/describe.git
+[submodule "lib/boost/mp11"]
+	path = lib/boost/mp11
+	url = https://github.com/boostorg/mp11.git
+[submodule "lib/boost/smart_ptr"]
+	path = lib/boost/smart_ptr
+	url = https://github.com/boostorg/smart_ptr.git
+[submodule "lib/boost/tuple"]
+	path = lib/boost/tuple
+	url = https://github.com/boostorg/tuple.git
+[submodule "lib/boost/array"]
+	path = lib/boost/array
+	url = https://github.com/boostorg/array.git
+[submodule "lib/boost/dynamic_bitset"]
+	path = lib/boost/dynamic_bitset
+	url = https://github.com/boostorg/dynamic_bitset.git
+[submodule "lib/boost/integer"]
+	path = lib/boost/integer
+	url = https://github.com/boostorg/integer.git
+[submodule "lib/boost/range"]
+	path = lib/boost/range
+	url = https://github.com/boostorg/range.git
+[submodule "lib/boost/system"]
+	path = lib/boost/system
+	url = https://github.com/boostorg/system.git
+[submodule "lib/boost/utility"]
+	path = lib/boost/utility
+	url = https://github.com/boostorg/utility.git
+[submodule "lib/boost/concept_check"]
+	path = lib/boost/concept_check
+	url = https://github.com/boostorg/concept_check.git
+[submodule "lib/boost/conversion"]
+	path = lib/boost/conversion
+	url = https://github.com/boostorg/conversion.git
