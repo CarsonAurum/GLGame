@@ -13,6 +13,3 @@
 [submodule "lib/SOIL2"]
 	path = lib/SOIL2
 	url = https://github.com/SpartanJ/SOIL2.git
-[submodule "lib/uuid_v4"]
-	path = lib/uuid_v4
-	url = https://github.com/crashoz/uuid_v4.git
