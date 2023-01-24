@@ -10,7 +10,6 @@ namespace TitanOfAir
     class Entity
     {
     private:
-
     public:
         Entity();
         virtual ~Entity() = delete;
