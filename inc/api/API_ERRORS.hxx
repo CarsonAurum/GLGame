@@ -1,0 +1,15 @@
+//
+// Carson R - 1/23/23
+//
+
+#ifndef TITANOFAIR_API_ERRORS_HXX
+#define TITANOFAIR_API_ERRORS_HXX
+
+typedef uint toa_error_t;
+
+#define TOA_SUCCESS 0
+#define TOA_COMPONENT_NOT_FOUND 1
+#define TOA_COMPONENT_PRESENT 2
+#define TOA_COMPONENT_CONFLICT 3
+
+#endif //TITANOFAIR_API_ERRORS_HXX

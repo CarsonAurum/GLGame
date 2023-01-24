@@ -5,6 +5,8 @@
 #include <uuid_v4.h>
 #include <spdlog/spdlog.h>
 #include "api/Entity.hxx"
+#include "api/API_ERRORS.hxx"
+#include <algorithm>
 
 using namespace TitanOfAir;
 

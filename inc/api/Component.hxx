@@ -18,8 +18,8 @@ namespace TitanOfAir
     {
     public:
         /**
-         * The default constructor creates the id. This constructor should be
-         * called from all implementing classes.
+         * The default constructor creates the id.
+         * @note This constructor should be called from all implementing classes.
          */
         Component();
         /**
