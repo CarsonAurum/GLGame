@@ -31,3 +31,15 @@
 [submodule "lib/boost/container_hash"]
 	path = lib/boost/container_hash
 	url = https://github.com/boostorg/container_hash.git
+[submodule "lib/boost/exception"]
+	path = lib/boost/exception
+	url = https://github.com/boostorg/exception.git
+[submodule "lib/boost/io"]
+	path = lib/boost/io
+	url = https://github.com/boostorg/io.git
+[submodule "lib/boost/move"]
+	path = lib/boost/move
+	url = https://github.com/boostorg/move.git
+[submodule "lib/boost/numeric_conversion"]
+	path = lib/boost/numeric_conversion
+	url = https://github.com/boostorg/numeric_conversion.git
