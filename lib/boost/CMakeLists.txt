@@ -17,6 +17,8 @@ add_subdirectory(concept_check)
 add_subdirectory(config)
 
 add_subdirectory(container)
+set(CONTAINER_INC container/include)
+set(CONTAINER_SRC boost_container)
 
 add_subdirectory(container_hash)
 
@@ -124,5 +126,5 @@ add_subdirectory(variant2)
 
 add_subdirectory(winapi)
 
-set(BOOST_INCLUDE_DIRS ${UUID_INC} PARENT_SCOPE)
-set(BOOST_LIBRARIES ${UUID_LIB} PARENT_SCOPE)
+set(BOOST_INCLUDE_DIRS ${CONTAINER_INC} ${UUID_INC} PARENT_SCOPE)
+set(BOOST_LIBRARIES ${CONTAINER_LIB} ${UUID_LIB} PARENT_SCOPE)

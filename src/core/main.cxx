@@ -7,7 +7,8 @@
 #include <spdlog/spdlog.h>
 #include "app/GLApp.hxx"
 #include "debug/Logging.hxx"
-#include "api/entities/Entity.hxx"
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_generators.hpp>
 
 using namespace TitanOfAir;
 
