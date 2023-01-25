@@ -32,6 +32,7 @@ std::size_t App::getComponentCount ()
     return this->components->size();
 }
 
+
 // Construction & Destruction
 
 App::App()
@@ -56,7 +57,12 @@ App::~App()
 
 App::ActionResult App::addEntity (Entity* entity)
 {
-    entities->push_back(entity->getID())
+    if( std::binary_search(this->entities->begin(), this->entities->end(), entity->getID()))
+    {
+        return APP_ENTITY_PRESENT;
+    }
+    this->entities->push_back(entity->getID());
+    std::sort(this->entities->begin(), this->entities->end());
     return APP_SUCCESS;
 }
 

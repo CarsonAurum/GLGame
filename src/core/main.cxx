@@ -7,18 +7,12 @@
 #include <spdlog/spdlog.h>
 #include "app/GLApp.hxx"
 #include "debug/Logging.hxx"
-#include <boost/uuid/uuid.hpp>
-#include <boost/uuid/uuid_generators.hpp>
+#include "boost/uuid/uuid.hpp"
+
+#include <boost/container/stable_vector.hpp>
 
 using namespace TitanOfAir;
 
-/**
- *
- * @return
- *      0  = Success.
- *      -1 = GLFW failure.
- *      -2 = OpenGL failure.
- */
 int main()
 {
     logging::configureLoggers();

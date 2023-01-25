@@ -2,7 +2,6 @@
 // Carson R - 1/23/23
 //
 
-#include <cstdlib>
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 
@@ -14,8 +13,10 @@ using namespace TitanOfAir;
 Entity::Entity()
 {
     auto generator = boost::uuids::random_generator{};
-    this->id = static_cast<boost::uuids::uuid *>(
-            malloc(sizeof(boost::uuids::uuid))
-    );
+    this->id = new boost::uuids::uuid;
     *(this->id) = generator();
+}
+
+boost::uuids::uuid* Entity::getID() {
+    this->id;
 }

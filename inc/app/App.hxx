@@ -16,11 +16,16 @@ namespace TitanOfAir
     class App
     {
     public:
+        // Types
         enum ActionResult
         {
-            APP_SUCCESS = 0;
+            // [App General Codes 00xx]
+            APP_SUCCESS = 0000,
+            // [Entity Codes 01xx]
+            APP_ENTITY_PRESENT = 0100
         };
-    public:
+
+        // API
         App(App&) = delete;
         void operator =(const App&) = delete;
         static App* getInstance();
@@ -28,12 +33,16 @@ namespace TitanOfAir
         // ECS
         std::size_t getEntityCount();
         std::size_t getComponentCount();
-        ActionResult addEntity(Entity* entity);
-        ActionResult removeEntity(Entity* entity);
+        ActionResult addEntity(Entity* e);
+        ActionResult removeEntity(Entity* e);
     protected:
+        // Internal Usage Only
         App();
         ~App();
+        bool hasEntity(Entity* e);
     private:
+        bool searchForEntity(boost::uuids::uuid* id, int l, int h);
+
         std::shared_mutex* eMutex;
         boost::container::stable_vector<boost::uuids::uuid*>* entities;
         std::shared_mutex* cMutex;
