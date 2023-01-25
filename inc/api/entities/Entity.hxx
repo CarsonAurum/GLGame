@@ -43,7 +43,7 @@ namespace TitanOfAir
         Entity(Entity&& move) = delete;
         virtual ~Entity() = default;
     protected:
-        boost::uuids::uuid id;
+        boost::uuids::uuid* id;
     };
 }
 

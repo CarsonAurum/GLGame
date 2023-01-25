@@ -19,3 +19,8 @@ target_link_libraries(TitanOfAir PRIVATE ${BOOST_LIBRARIES})
 target_include_directories(TitanOfAir PRIVATE ${GLAD_INCLUDE_DIR} ${GLFW_INCLUDE_DIR} ${SOIL_INCLUDE_DIR})
 target_include_directories(TitanOfAir PRIVATE ${GLM_INCLUDE_DIR} ${OPUS_INCLUDE_DIR} ${SPDLOG_INCLUDE_DIR})
 target_include_directories(TitanOfAir PRIVATE ${BOOST_INCLUDE_DIRS})
+
+
+if(WIN32)
+target_link_libraries(TitanOfAir PRIVATE bcrypt)
+endif()
