@@ -8,7 +8,6 @@
 // Libs
 #include "boost/uuid/uuid.hpp"
 // Local
-#include "api/API_ERRORS.hxx"
 #include "api/ecs/components/Component.hxx"
 
 namespace TitanOfAir
@@ -26,22 +25,18 @@ namespace TitanOfAir
          */
         Entity();
         /**
-         * The copy constructor for copying this object.
-         * @note This must be implemented by all subclasses.
-         * @param copy The component whose data should be copied, leaving the
-         * given entities unchanged.
+         * The copy constructor for copying this object. Explicitly disallowed.
          */
         Entity(const Entity& copy) = delete;
         /**
-         * The move constructor for relocating this object.
-         * @note This must be implemented by all subclasses.
-         * @param move The component whose data should be moved to the target
-         * destination.
-         * @post This constructor should clear the parameter's values by calling
-         * its destructor.
+         * The move constructor for relocating this object. Explicitly disallowed.
          */
         Entity(Entity&& move) = delete;
-        virtual ~Entity() = default;
+        /**
+         * The copy assignment operator for relocating this object. Explicitly disallowed.
+         */
+        void operator =(const Entity&) = delete;
+        ~Entity();
 
         boost::uuids::uuid* getID();
     protected:

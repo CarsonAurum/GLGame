@@ -15,57 +15,112 @@
 
 namespace TitanOfAir
 {
+    /**
+     * A class/namespace for central data to the application.
+     *
+     * This class serves as the director for the built-in ECS system.
+     */
     class App
     {
     public:
         // Types
+        /**
+         * The ActionResult is a 4 digit code representing a more detailed response from functions within this
+         * class.
+         *
+         * Code List:
+         * [00xx]           =   General App Codes
+         *      [0000]          =   APP_SUCCESS
+         *      [0001]          =   APP_FAILURE
+         * [01xx]           =   Entity Codes
+         *      [0100]          =   APP_ENTY_OP_SUCCESS
+         *      [0101]          =   APP_ENTY_OP_ERROR
+         *      [0102]          =   APP_ENTY_PRESENT
+         *      [0103]          =   APP_ENTY_NOT_PRESENT
+         * [02xx]           =   Component Codes
+         *      [0200]          =   APP_CMPT_OP_SUCCESS
+         *      [0201]          =   APP_CMPT_OP_ERROR
+         *      [0202]          =   APP_CMPT_PRESENT
+         *      [0203]          =   APP_CMPT_NOT_PRESENT
+         */
         enum ActionResult
         {
             // [App General Codes 00xx]
             APP_SUCCESS = 0000,
+            APP_FAILURE = 0001,
+
+
             // [Entity Codes 01xx]
-            APP_ENTITY_PRESENT = 0100
+            APP_ENTY_OP_SUCCESS = 0100,
+            APP_ENTY_OP_ERROR = 0101,
+            APP_ENTY_PRESENT = 0102,
+            APP_ENTY_NOT_PRESENT = 0103,
+
+            // [Component Codes 02xx]
+            APP_CMPT_OP_SUCCESS = 0200,
+            APP_CMPT_OP_ERROR = 0201,
+            APP_CMPT_PRESENT = 0202,
+            APP_CMPT_NOT_PRESENT = 0203,
         };
 
-        // API
-        App(App&) = delete;
-        void operator =(const App&) = delete;
-        static App* getInstance();
+        // Singleton API
+        App(App &) = delete;
+
+        void operator=(const App &) = delete;
+
+        /**
+         * Access the singleton instance of this class. NO move/copy allowed.
+         * @return This class' global instance.
+         */
+        static App *shared();
+
+        void init();
 
         // Public Constants
-        static const char* NAME;
-        static const char* APP_NAME;
+        static constexpr const char *GAME_NAME = "Titan Of Air";
+        static constexpr const char *APP_NAME = "titan_of_air";
+        static constexpr const char *LOG = "TitanOfAir";
 
         // ECS
         std::size_t getEntityCount();
+
         std::size_t getComponentCount();
-        ActionResult addEntity(Entity*);
-        ActionResult removeEntity(Entity*);
-        ActionResult getStatusFor(Entity*);
-        ActionResult addComponent(Component*);
-        ActionResult removeComponent(Component*);
-        ActionResult getStatusFor(Component*);
+
+        ActionResult addEntity(Entity *);
+
+        ActionResult removeEntity(Entity *);
+
+        ActionResult getStatusFor(Entity *);
+
+        ActionResult addComponent(Component *);
+
+        ActionResult removeComponent(Component *);
+
+        ActionResult getStatusFor(Component *);
 
     protected:
         // Internal Usage Only
         App();
+
         ~App();
-        bool hasEntity(Entity*);
-        bool hasComponent(Component*);
+
+        bool hasEntity(Entity *);
+
+        bool hasComponent(Component *);
+
         bool clearECS();
+
     private:
         // ECS
-        boost::shared_mutex* eMutex;
-        boost::container::flat_set<boost::uuids::uuid*>* entities;
-        boost::shared_mutex* cMutex;
-        boost::container::flat_set<boost::uuids::uuid*>* components;
-        boost::shared_mutex* esMutex;
-        boost::container::flat_map<boost::uuids::uuid*, ActionResult>* eStatus;
-        boost::shared_mutex* csMutex;
-        boost::container::flat_map<boost::uuids::uuid*, ActionResult>* cStatus;
+        boost::shared_mutex *eMutex;
+        boost::container::flat_set<boost::uuids::uuid *> *entities;
+        boost::shared_mutex *cMutex;
+        boost::container::flat_set<boost::uuids::uuid *> *components;
+        boost::shared_mutex *esMutex;
+        boost::container::flat_map<boost::uuids::uuid *, ActionResult> *eStatus;
+        boost::shared_mutex *csMutex;
+        boost::container::flat_map<boost::uuids::uuid *, ActionResult> *cStatus;
     };
-    const char* App::NAME = "Titan Of Air";
-    const char* App::APP_NAME = "titan_of_air";
 }
 
 #endif //TITANOFAIR_APP_HXX

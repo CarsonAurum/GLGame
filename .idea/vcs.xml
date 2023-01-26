@@ -48,6 +48,7 @@
     <mapping directory="$PROJECT_DIR$/lib/boost/regex" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/serialization" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/smart_ptr" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/sort" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/spirit" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/static_assert" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/system" vcs="Git" />

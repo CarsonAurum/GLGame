@@ -10,7 +10,9 @@
 namespace TitanOfAir::utils
 {
     void glPrintShaderLogs(GLuint shader);
+
     void glPrintProgramLog(GLuint program);
+
     bool glCheckError();
 }
 

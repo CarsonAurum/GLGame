@@ -19,13 +19,15 @@ namespace TitanOfAir
          * @note This constructor should be called from all implementing classes.
          */
         Component();
+
         /**
          * The copy constructor for copying this object.
          * @note This must be implemented by all subclasses.
          * @param copy The component whose data should be copied, leaving the
          * given component unchanged.
          */
-        Component(const Component& copy) = delete;
+        Component(const Component &copy) = delete;
+
         /**
          * The move constructor for relocating this object.
          * @note This must be implemented by all subclasses.
@@ -34,8 +36,10 @@ namespace TitanOfAir
          * @post This constructor should clear the parameter's values by calling
          * its destructor.
          */
-        Component(Component&& move) = delete;
+        Component(Component &&move) = delete;
+
         virtual ~Component() = delete;
+
     private:
     };
 }

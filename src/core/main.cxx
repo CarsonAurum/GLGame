@@ -2,21 +2,21 @@
 // Carson R - 1/10/2023
 //
 
+// Dependencies
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <spdlog/spdlog.h>
+// Local Includes
+#include "app/App.hxx"
 #include "app/GLApp.hxx"
 #include "debug/Logging.hxx"
-#include "boost/uuid/uuid.hpp"
-
-#include <boost/container/stable_vector.hpp>
 
 using namespace TitanOfAir;
 
 int main()
 {
     logging::configureLoggers();
-    spdlog::get("TitanOfAir")->info("Starting TitanOfAir v0.0.0-alpha.");
+    spdlog::get(App::LOG)->info("Starting TitanOfAir v0.0.0-alpha.");
 
     // Configure OpenGL Runtime.
     auto window = graphics::configureGLFW();
@@ -24,16 +24,18 @@ int main()
     int glVersion = gladLoadGL();
     if (glVersion == 0)
     {
-        spdlog::get("TitanOfAir")->critical("Failed to initialize the OpenGL context.");
+        spdlog::get(App::LOG)->critical("Failed to initialize the OpenGL context.");
         glfwTerminate();
         return -2;
     }
     int verMajor, verMinor;
     glGetIntegerv(GL_MAJOR_VERSION, &verMajor);
     glGetIntegerv(GL_MINOR_VERSION, &verMinor);
-    spdlog::get("TitanOfAir")->info("Loaded OpenGL {}.{}.", verMajor, verMinor);
+    spdlog::get(App::LOG)->info("Loaded OpenGL {}.{}.", verMajor, verMinor);
 
-    // Start Game Logic.
+    spdlog::get(App::LOG)->info("Loading game mechanics.");
+    App::shared()->init();
+    spdlog::get(App::LOG)->info("Init game mechanics complete.");
 
     // ...
 
