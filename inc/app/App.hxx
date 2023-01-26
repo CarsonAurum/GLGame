@@ -8,6 +8,7 @@
 #include "api/ecs/entities/Entity.hxx"
 // NOTE: These will become less efficient with more items.
 // Keep an eye on object counts for these containers.
+#include <boost/tuple/tuple.hpp>
 #include <boost/container/flat_set.hpp>
 #include <boost/container/flat_map.hpp>
 #include <boost/thread/shared_mutex.hpp>
@@ -25,8 +26,8 @@ namespace TitanOfAir
     public:
         // Types
         /**
-         * The ActionResult is a 4 digit code representing a more detailed response from functions within this
-         * class.
+         * The ActionResult is a 4 digit code representing a more detailed response from
+         * functions within this class.
          *
          * Code List:
          * [00xx]           =   General App Codes
@@ -42,6 +43,8 @@ namespace TitanOfAir
          *      [0201]          =   APP_CMPT_OP_ERROR
          *      [0202]          =   APP_CMPT_PRESENT
          *      [0203]          =   APP_CMPT_NOT_PRESENT
+         *
+         * @see `inc/api/Except.hxx`
          */
         enum ActionResult
         {
@@ -82,19 +85,19 @@ namespace TitanOfAir
         static constexpr const char *LOG = "TitanOfAir";
 
         // ECS
-        std::size_t getEntityCount();
+        std::size_t eCount();
 
-        std::size_t getComponentCount();
+        std::size_t cCount();
 
-        ActionResult addEntity(Entity *);
+        ActionResult add(Entity *);
 
-        ActionResult removeEntity(Entity *);
+        ActionResult remove(Entity *);
 
         ActionResult getStatusFor(Entity *);
 
-        ActionResult addComponent(Component *);
+        ActionResult add(Component *);
 
-        ActionResult removeComponent(Component *);
+        ActionResult remove(Component *);
 
         ActionResult getStatusFor(Component *);
 
@@ -113,13 +116,13 @@ namespace TitanOfAir
     private:
         // ECS
         boost::shared_mutex *eMutex;
-        boost::container::flat_set<boost::uuids::uuid *> *entities;
+        boost::container::flat_set<const boost::uuids::uuid *> *entities;
         boost::shared_mutex *cMutex;
-        boost::container::flat_set<boost::uuids::uuid *> *components;
+        boost::container::flat_set<const boost::uuids::uuid *> *components;
         boost::shared_mutex *esMutex;
-        boost::container::flat_map<boost::uuids::uuid *, ActionResult> *eStatus;
+        boost::container::flat_map<const boost::uuids::uuid *, ActionResult> *eStatus;
         boost::shared_mutex *csMutex;
-        boost::container::flat_map<boost::uuids::uuid *, ActionResult> *cStatus;
+        boost::container::flat_map<const boost::uuids::uuid *, ActionResult> *cStatus;
     };
 }
 

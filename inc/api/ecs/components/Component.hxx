@@ -5,6 +5,9 @@
 #ifndef TITANOFAIR_COMPONENT_HXX
 #define TITANOFAIR_COMPONENT_HXX
 
+// Libs
+#include "boost/uuid/uuid.hpp"
+
 namespace TitanOfAir
 {
     /**
@@ -21,26 +24,34 @@ namespace TitanOfAir
         Component();
 
         /**
-         * The copy constructor for copying this object.
-         * @note This must be implemented by all subclasses.
-         * @param copy The component whose data should be copied, leaving the
-         * given component unchanged.
+         * The copy constructor for copying this object. Explicitly disallowed.
          */
-        Component(const Component &copy) = delete;
+        Component(const Component &) = delete;
 
         /**
-         * The move constructor for relocating this object.
-         * @note This must be implemented by all subclasses.
-         * @param move The component whose data should be moved to the target
-         * destination.
-         * @post This constructor should clear the parameter's values by calling
-         * its destructor.
+         * The move constructor for relocating this object. Explicitly disallowed.
          */
-        Component(Component &&move) = delete;
+        Component(Component &&) = delete;
 
-        virtual ~Component() = delete;
+        /**
+         * The copy assignment operator for relocating this object. Explicitly disallowed.
+         */
+        void operator=(const Component &) = delete;
 
-    private:
+        /**
+         * The destructor for this object will remove itself from the shared ECS system manager
+         * before releasing its resources.
+         */
+        ~Component();
+
+        /**
+         * Access a pointer to the ID associated with this object.
+         * @return A constant pointer to the UUID for this object.
+         */
+        const boost::uuids::uuid *getID();
+
+    protected:
+        const boost::uuids::uuid *id;
     };
 }
 

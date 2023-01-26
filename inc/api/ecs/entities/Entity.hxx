@@ -20,27 +20,42 @@ namespace TitanOfAir
     {
     public:
         /**
-         * The default constructor creates the id.
-         * @note This constructor should be called from all implementing classes.
+         * The default constructor creates the id and registers this entity with the ECS system
+         * manager.
+         *
+         * @throws TitanOfAir::Exception If the entity cannot be added to the global ECS system.
          */
         Entity();
+
         /**
          * The copy constructor for copying this object. Explicitly disallowed.
          */
-        Entity(const Entity& copy) = delete;
+        Entity(const Entity &) = delete;
+
         /**
          * The move constructor for relocating this object. Explicitly disallowed.
          */
-        Entity(Entity&& move) = delete;
+        Entity(Entity &&) = delete;
+
         /**
          * The copy assignment operator for relocating this object. Explicitly disallowed.
          */
-        void operator =(const Entity&) = delete;
+        void operator=(const Entity &) = delete;
+
+        /**
+         * The destructor for this object will remove itself from the shared ECS system manager
+         * before releasing its resources.
+         */
         ~Entity();
 
-        boost::uuids::uuid* getID();
+        /**
+         * Access a pointer to the ID associated with this object.
+         * @return A constant pointer to the UUID for this object.
+         */
+        const boost::uuids::uuid *getID();
+
     protected:
-        boost::uuids::uuid* id;
+        const boost::uuids::uuid *id;
     };
 }
 
