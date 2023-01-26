@@ -3,9 +3,12 @@
 //
 
 #include "app/App.hxx"
-#include <shared_mutex>
-#include <boost/container/stable_vector.hpp>
+#include <boost/thread/shared_mutex.hpp>
 #include <boost/uuid/uuid.hpp>
+// NOTE: These will become less efficient with more items.
+// Keep an eye on object counts for these containers.
+#include <boost/container/flat_map.hpp>
+#include <boost/container/flat_set.hpp>
 
 using namespace TitanOfAir;
 
@@ -34,39 +37,73 @@ std::size_t App::getComponentCount ()
 
 
 // Construction & Destruction
-
 App::App()
 {
-    this->entities = new boost::container::stable_vector<
-            boost::uuids::uuid*>{20};
-    this->eMutex = new std::shared_mutex{};
-    this->components = new boost::container::stable_vector<
-            boost::uuids::uuid*> {20};
-    this->cMutex = new std::shared_mutex{};
+    this->entities = new boost::container::flat_set<boost::uuids::uuid*>{};
+    this->eMutex = new boost::shared_mutex{};
+    this->components = new boost::container::flat_set<boost::uuids::uuid*> {};
+    this->cMutex = new boost::shared_mutex{};
+    this->eStatus = new boost::container::flat_map<
+            boost::uuids::uuid*, ActionResult>{};
+    this->esMutex = new boost::shared_mutex{};
+    this->cStatus = new boost::container::flat_map<
+            boost::uuids::uuid*, ActionResult>{};
+    this->csMutex = new boost::shared_mutex{};
 }
 
 App::~App()
 {
-    // Ensure this is ONLY done after all the components/entities have been
-    // freed.
-    assert(this->entities->empty());
-    assert(this->components->empty());
-    delete this->entities;
-    delete this->components;
+    // TODO: Memory Cleanup
 }
 
-App::ActionResult App::addEntity (Entity* entity)
+App::ActionResult App::addEntity (Entity* e)
 {
-    if( std::binary_search(this->entities->begin(), this->entities->end(), entity->getID()))
-    {
-        return APP_ENTITY_PRESENT;
-    }
-    this->entities->push_back(entity->getID());
-    std::sort(this->entities->begin(), this->entities->end());
+    this -> eMutex -> lock();
+
+
+
+    this -> eMutex -> unlock();
     return APP_SUCCESS;
 }
 
-App::ActionResult App::removeEntity (Entity* entity)
+App::ActionResult App::removeEntity (Entity* e)
+{
+    this -> eMutex -> lock();
+    return APP_SUCCESS;
+}
+
+App::ActionResult App::getStatusFor (Entity* e)
 {
     return APP_SUCCESS;
 }
+
+App::ActionResult App::addComponent (Component* c)
+{
+    return APP_SUCCESS;
+}
+
+App::ActionResult App::removeComponent (Component* c)
+{
+    return APP_SUCCESS;
+}
+
+App::ActionResult App::getStatusFor (Component* c)
+{
+    return APP_SUCCESS;
+}
+
+bool App::hasEntity (Entity* e)
+{
+    return false;
+}
+
+bool App::hasComponent (Component* c)
+{
+    return false;
+}
+
+bool App::clearECS ()
+{
+    return false;
+}
+

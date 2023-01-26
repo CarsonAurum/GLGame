@@ -199,3 +199,6 @@
 [submodule "lib/boost/tokenizer"]
 	path = lib/boost/tokenizer
 	url = https://github.com/boostorg/tokenizer.git
+[submodule "lib/boost/sort"]
+	path = lib/boost/sort
+	url = https://github.com/boostorg/sort.git

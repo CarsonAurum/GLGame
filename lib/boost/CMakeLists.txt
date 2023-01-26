@@ -1,4 +1,6 @@
 add_subdirectory(algorithm)
+set(ALGORITHM_INC algorithm/include)
+set(ALGORITHM_LIB boost_algorithm)
 
 add_subdirectory(align)
 
@@ -90,6 +92,10 @@ add_subdirectory(serialization)
 
 add_subdirectory(smart_ptr)
 
+add_subdirectory(sort)
+set(SORT_INC sort/include)
+set(SORT_LIB boost_sort)
+
 add_subdirectory(spirit)
 
 add_subdirectory(static_assert)
@@ -105,6 +111,8 @@ add_subdirectory(tokenizer)
 add_subdirectory(tti)
 
 add_subdirectory(tuple)
+set(TUPLE_INC tuple/include)
+set(TUPLE_SRC boost_tuple)
 
 add_subdirectory(type_index)
 
@@ -126,5 +134,17 @@ add_subdirectory(variant2)
 
 add_subdirectory(winapi)
 
-set(BOOST_INCLUDE_DIRS ${CONTAINER_INC} ${UUID_INC} PARENT_SCOPE)
-set(BOOST_LIBRARIES ${CONTAINER_LIB} ${UUID_LIB} PARENT_SCOPE)
+set(BOOST_INCLUDE_DIRS
+        ${ALGORITHM_INC}
+        ${CONTAINER_INC}
+        ${SORT_INC}
+        ${TUPLE_INC}
+        ${UUID_INC}
+    PARENT_SCOPE)
+set(BOOST_LIBRARIES
+        ${ALGORITHM_LIB}
+        ${CONTAINER_LIB}
+        ${SORT_LIB}
+        ${TUPLE_LIB}
+        ${UUID_LIB}
+    PARENT_SCOPE)
