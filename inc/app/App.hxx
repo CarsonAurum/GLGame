@@ -9,9 +9,8 @@
 // NOTE: These will become less efficient with more items.
 // Keep an eye on object counts for these containers.
 #include <boost/tuple/tuple.hpp>
-#include <boost/container/flat_set.hpp>
-#include <boost/container/flat_map.hpp>
 #include <boost/thread/shared_mutex.hpp>
+#include <boost/container/map.hpp>
 #include <boost/uuid/uuid.hpp>
 
 namespace TitanOfAir
@@ -70,6 +69,7 @@ namespace TitanOfAir
                 APP_CMPT_NOT_PRESENT = 0203,
             };
 
+            Response();
             Response(ActionResult);
 
             virtual const char *what() const noexcept;
@@ -128,16 +128,20 @@ namespace TitanOfAir
 
         bool clearECS();
 
+        typedef const boost::uuids::uuid EcsID;
+        typedef boost::tuples::tuple<const Entity*, Response*> EntityTuple;
+        typedef std::pair<EcsID*, EntityTuple> EntityPair;
+        typedef boost::container::map<EcsID *, EntityTuple> EntityContainer;
+        typedef boost::tuples::tuple<const Component*, Response*> ComponentTuple;
+        typedef std::pair<EcsID*, ComponentTuple> ComponentPair;
+        typedef boost::container::map<EcsID *, ComponentTuple> ComponentContainer;
+
     private:
         // ECS
         boost::shared_mutex *eMutex;
-        boost::container::flat_set<const boost::uuids::uuid *> *entities;
+        EntityContainer *entities;
         boost::shared_mutex *cMutex;
-        boost::container::flat_set<const boost::uuids::uuid *> *components;
-        boost::shared_mutex *esMutex;
-        boost::container::flat_map<const boost::uuids::uuid *, Response> *eStatus;
-        boost::shared_mutex *csMutex;
-        boost::container::flat_map<const boost::uuids::uuid *, Response> *cStatus;
+        ComponentContainer *components;
     };
 }
 

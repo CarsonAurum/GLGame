@@ -6,10 +6,8 @@
 #include <boost/thread/shared_mutex.hpp>
 #include <boost/tuple/tuple.hpp>
 #include <boost/uuid/uuid.hpp>
-// NOTE: These will become less efficient with more items.
-// Keep an eye on object counts for these containers.
-#include <boost/container/flat_map.hpp>
-#include <boost/container/flat_set.hpp>
+#include <boost/container/map.hpp>
+#include <boost/tuple/tuple.hpp>
 // Local Includes
 #include "app/App.hxx"
 
@@ -26,8 +24,6 @@ App *App::shared()
         sharedInstance = new App();
         sharedInstance->eMutex->lock();
         sharedInstance->cMutex->lock();
-        sharedInstance->esMutex->lock();
-        sharedInstance->csMutex->lock();
     }
     return sharedInstance;
 }
@@ -48,22 +44,16 @@ std::size_t App::cCount()
 // Construction & Destruction
 App::App()
 {
-    this->entities = new boost::container::flat_set<const boost::uuids::uuid *>{};
     this->eMutex = new boost::shared_mutex{};
-    this->components = new boost::container::flat_set<const boost::uuids::uuid *>{};
+    this->entities = new EntityContainer{};
     this->cMutex = new boost::shared_mutex{};
-    this->eStatus = new boost::container::flat_map<const boost::uuids::uuid *, Response>{};
-    this->esMutex = new boost::shared_mutex{};
-    this->cStatus = new boost::container::flat_map<const boost::uuids::uuid *, Response>{};
-    this->csMutex = new boost::shared_mutex{};
+    this->components = new ComponentContainer{};
 }
 
 void App::init()
 {
     this->eMutex->unlock();
     this->cMutex->unlock();
-    this->esMutex->unlock();
-    this->csMutex->unlock();
 }
 
 App::~App()
@@ -79,53 +69,17 @@ App::~App()
     delete this->components;
     cMutex->unlock();
     delete cMutex;
-
-    esMutex->lock();
-    assert(this->eStatus->empty());
-    delete this->eStatus;
-    esMutex->unlock();
-    delete esMutex;
-
-    csMutex->lock();
-    assert(this->cStatus->empty());
-    delete this->cStatus;
-    csMutex->unlock();
-    delete csMutex;
 }
 
 
 App::Response App::add(Entity *e)
 {
-    this->eMutex->lock_upgrade();
-    if (this->entities->contains(e->getID()))
-    {
-        this->eMutex->unlock();
-        return {Response::APP_ENTY_PRESENT};
-    }
-    this->eMutex->unlock_upgrade_and_lock();
-    auto res1 = this->entities->insert(e->getID());
-    this->eMutex->unlock();
-    if (res1.second)
-    {
-        this->esMutex->lock();
-        this->eStatus->insert(std::pair<const boost::uuids::uuid*,
-                              Response::ActionResult>(
-                        e->getID(), {Response::APP_ENTY_OK}));
-        this->esMutex->unlock();
-        return {Response::APP_SUCCESS};
-    }
-    else
-    {
-        return { Response::APP_ENTY_OP_SUCCESS };
-    }
+    return {Response::APP_SUCCESS};
 }
 
 App::Response App::remove(Entity *e)
 {
-    this->eMutex->lock_upgrade();
-    if (this->entities->contains())
 
-    this->eMutex->unlock();
     return {Response::APP_SUCCESS};
 }
 
@@ -162,6 +116,13 @@ bool App::hasComponent(Component *c)
 bool App::clearECS()
 {
     return false;
+}
+
+// App Response
+
+App::Response::Response()
+{
+    this->cause = APP_ENTY_OK;
 }
 
 App::Response::Response(ActionResult cause)
