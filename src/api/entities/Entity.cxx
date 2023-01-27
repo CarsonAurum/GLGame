@@ -7,7 +7,6 @@
 
 #include "app/App.hxx"
 #include "api/ecs/entities/Entity.hxx"
-#include "api/Except.hxx"
 
 using namespace TitanOfAir;
 
@@ -19,9 +18,8 @@ Entity::Entity()
     this->id = new boost::uuids::uuid{generator()};
     // Add to ECS
     auto res = App::shared()->add(this);
-    if(res != App::APP_ENTY_OP_SUCCESS)
-        throw TitanOfAir::Exception{res};
-
+    if(!res.is(App::Response::APP_ENTY_OP_SUCCESS))
+        throw boost::move(res);
 }
 
 Entity::~Entity()

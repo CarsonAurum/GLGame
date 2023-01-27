@@ -25,47 +25,62 @@ namespace TitanOfAir
     {
     public:
         // Types
-        /**
-         * The ActionResult is a 4 digit code representing a more detailed response from
-         * functions within this class.
-         *
-         * Code List:
-         * [00xx]           =   General App Codes
-         *      [0000]          =   APP_SUCCESS
-         *      [0001]          =   APP_FAILURE
-         * [01xx]           =   Entity Codes
-         *      [0100]          =   APP_ENTY_OP_SUCCESS
-         *      [0101]          =   APP_ENTY_OP_ERROR
-         *      [0102]          =   APP_ENTY_PRESENT
-         *      [0103]          =   APP_ENTY_NOT_PRESENT
-         * [02xx]           =   Component Codes
-         *      [0200]          =   APP_CMPT_OP_SUCCESS
-         *      [0201]          =   APP_CMPT_OP_ERROR
-         *      [0202]          =   APP_CMPT_PRESENT
-         *      [0203]          =   APP_CMPT_NOT_PRESENT
-         *
-         * @see `inc/api/Except.hxx`
-         */
-        enum ActionResult
+        class Response : public std::exception
         {
-            // [App General Codes 00xx]
-            APP_SUCCESS = 0000,
-            APP_FAILURE = 0001,
+        public:
+            /**
+     * The ActionResult is a 4 digit code representing a more detailed response from
+     * functions within this class.
+     *
+     * Code List:
+     * [00xx]           =   General App Codes
+     *      [0000]          =   APP_SUCCESS
+     *      [0001]          =   APP_FAILURE
+     * [01xx]           =   Entity Codes
+     *      [0100]          =   APP_ENTY_OP_SUCCESS
+     *      [0101]          =   APP_ENTY_OP_ERROR
+     *      [0102]          =   APP_ENTY_PRESENT
+     *      [0103]          =   APP_ENTY_NOT_PRESENT
+     * [02xx]           =   Component Codes
+     *      [0200]          =   APP_CMPT_OP_SUCCESS
+     *      [0201]          =   APP_CMPT_OP_ERROR
+     *      [0202]          =   APP_CMPT_PRESENT
+     *      [0203]          =   APP_CMPT_NOT_PRESENT
+     *
+     * @see `inc/api/Except.hxx`
+     */
+            enum ActionResult
+            {
+                // [App General Codes 00xx]
+                APP_SUCCESS = 0000,
+                APP_FAILURE = 0001,
 
 
-            // [Entity Codes 01xx]
-            APP_ENTY_OP_SUCCESS = 0100,
-            APP_ENTY_OP_ERROR = 0101,
-            APP_ENTY_PRESENT = 0102,
-            APP_ENTY_NOT_PRESENT = 0103,
+                // [Entity Codes 01xx]
+                APP_ENTY_OP_SUCCESS = 0100,
+                APP_ENTY_OP_ERROR = 0101,
+                APP_ENTY_PRESENT = 0102,
+                APP_ENTY_NOT_PRESENT = 0103,
+                APP_ENTY_OK = 0104,
 
-            // [Component Codes 02xx]
-            APP_CMPT_OP_SUCCESS = 0200,
-            APP_CMPT_OP_ERROR = 0201,
-            APP_CMPT_PRESENT = 0202,
-            APP_CMPT_NOT_PRESENT = 0203,
+                // [Component Codes 02xx]
+                APP_CMPT_OP_SUCCESS = 0200,
+                APP_CMPT_OP_ERROR = 0201,
+                APP_CMPT_PRESENT = 0202,
+                APP_CMPT_NOT_PRESENT = 0203,
+            };
+
+            Response(ActionResult);
+
+            virtual const char *what() const noexcept;
+
+            unsigned short getCode();
+
+            bool is(ActionResult);
+
+        private:
+            ActionResult cause;
         };
-
         // Singleton API
         App(App &) = delete;
 
@@ -89,17 +104,17 @@ namespace TitanOfAir
 
         std::size_t cCount();
 
-        ActionResult add(Entity *);
+        Response add(Entity *);
 
-        ActionResult remove(Entity *);
+        Response remove(Entity *);
 
-        ActionResult getStatusFor(Entity *);
+        Response getStatusFor(Entity *);
 
-        ActionResult add(Component *);
+        Response add(Component *);
 
-        ActionResult remove(Component *);
+        Response remove(Component *);
 
-        ActionResult getStatusFor(Component *);
+        Response getStatusFor(Component *);
 
     protected:
         // Internal Usage Only
@@ -120,9 +135,9 @@ namespace TitanOfAir
         boost::shared_mutex *cMutex;
         boost::container::flat_set<const boost::uuids::uuid *> *components;
         boost::shared_mutex *esMutex;
-        boost::container::flat_map<const boost::uuids::uuid *, ActionResult> *eStatus;
+        boost::container::flat_map<const boost::uuids::uuid *, Response> *eStatus;
         boost::shared_mutex *csMutex;
-        boost::container::flat_map<const boost::uuids::uuid *, ActionResult> *cStatus;
+        boost::container::flat_map<const boost::uuids::uuid *, Response> *cStatus;
     };
 }
 

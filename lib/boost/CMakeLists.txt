@@ -59,6 +59,8 @@ add_subdirectory(iterator)
 add_subdirectory(lexical_cast)
 
 add_subdirectory(move)
+set(MOVE_INC move/include)
+set(MOVE_LIB boost_move)
 
 add_subdirectory(mp11)
 

@@ -52,9 +52,9 @@ App::App()
     this->eMutex = new boost::shared_mutex{};
     this->components = new boost::container::flat_set<const boost::uuids::uuid *>{};
     this->cMutex = new boost::shared_mutex{};
-    this->eStatus = new boost::container::flat_map<const boost::uuids::uuid *, ActionResult>{};
+    this->eStatus = new boost::container::flat_map<const boost::uuids::uuid *, Response>{};
     this->esMutex = new boost::shared_mutex{};
-    this->cStatus = new boost::container::flat_map<const boost::uuids::uuid *, ActionResult>{};
+    this->cStatus = new boost::container::flat_map<const boost::uuids::uuid *, Response>{};
     this->csMutex = new boost::shared_mutex{};
 }
 
@@ -94,13 +94,13 @@ App::~App()
 }
 
 
-App::ActionResult App::add(Entity *e)
+App::Response App::add(Entity *e)
 {
     this->eMutex->lock_upgrade();
     if (this->entities->contains(e->getID()))
     {
         this->eMutex->unlock();
-        return APP_ENTY_PRESENT;
+        return {Response::APP_ENTY_PRESENT};
     }
     this->eMutex->unlock_upgrade_and_lock();
     auto res1 = this->entities->insert(e->getID());
@@ -108,42 +108,45 @@ App::ActionResult App::add(Entity *e)
     if (res1.second)
     {
         this->esMutex->lock();
-        this->eStatus->insert(boost::tuple<const boost::uuids::uuid *, bool>{e->getID(), false});
+        this->eStatus->insert(std::pair<const boost::uuids::uuid*,
+                              Response::ActionResult>(
+                        e->getID(), {Response::APP_ENTY_OK}));
         this->esMutex->unlock();
-        return APP_ENTY_OP_SUCCESS;
+        return {Response::APP_SUCCESS};
     }
     else
     {
-        return APP_ENTY_OP_ERROR;
+        return { Response::APP_ENTY_OP_SUCCESS };
     }
 }
 
-App::ActionResult App::remove(Entity *e)
+App::Response App::remove(Entity *e)
 {
-    this->eMutex->lock();
+    this->eMutex->lock_upgrade();
+    if (this->entities->contains())
 
     this->eMutex->unlock();
-    return APP_SUCCESS;
+    return {Response::APP_SUCCESS};
 }
 
-App::ActionResult App::getStatusFor(Entity *e)
+App::Response App::getStatusFor(Entity *e)
 {
-    return APP_SUCCESS;
+    return {Response::APP_SUCCESS};
 }
 
-App::ActionResult App::add(Component *c)
+App::Response App::add(Component *c)
 {
-    return APP_SUCCESS;
+    return {Response::APP_SUCCESS};
 }
 
-App::ActionResult App::remove(Component *c)
+App::Response App::remove(Component *c)
 {
-    return APP_SUCCESS;
+    return {Response::APP_SUCCESS};
 }
 
-App::ActionResult App::getStatusFor(Component *c)
+App::Response App::getStatusFor(Component *c)
 {
-    return APP_SUCCESS;
+    return {Response::APP_SUCCESS};
 }
 
 bool App::hasEntity(Entity *e)
@@ -159,5 +162,42 @@ bool App::hasComponent(Component *c)
 bool App::clearECS()
 {
     return false;
+}
+
+App::Response::Response(ActionResult cause)
+{
+    this->cause = cause;
+}
+
+const char *App::Response::what() const noexcept
+{
+    switch (this->cause)
+    {
+        case ActionResult::APP_SUCCESS: return "App Success";
+        case ActionResult::APP_FAILURE: return "App Failure";
+
+        case ActionResult::APP_ENTY_OP_SUCCESS: return "Entity Operation Success";
+        case ActionResult::APP_ENTY_OP_ERROR: return "Entity Operation Failure";
+        case ActionResult::APP_ENTY_PRESENT: return "Entity Present";
+        case ActionResult::APP_ENTY_NOT_PRESENT: return "Entity Not Present";
+
+        case ActionResult::APP_CMPT_OP_SUCCESS: return "Component Operation Success";
+        case ActionResult::APP_CMPT_OP_ERROR: return "Component Operation Failure";
+        case ActionResult::APP_CMPT_PRESENT: return "Component Present";
+        case ActionResult::APP_CMPT_NOT_PRESENT: return "Component Not Present";
+
+        default: return "";
+
+    }
+}
+
+unsigned short App::Response::getCode()
+{
+    return this->cause;
+}
+
+bool App::Response::is(App::Response::ActionResult res)
+{
+    return this->getCode() == res;
 }
 
