@@ -202,3 +202,6 @@
 [submodule "lib/boost/sort"]
 	path = lib/boost/sort
 	url = https://github.com/boostorg/sort.git
+[submodule "lib/glad"]
+	path = lib/glad
+	url = https://github.com/CarsonAurum/glad_cmake.git
