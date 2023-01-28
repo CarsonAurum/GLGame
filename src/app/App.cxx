@@ -5,9 +5,7 @@
 // Dependencies
 #include <boost/thread/shared_mutex.hpp>
 #include <boost/tuple/tuple.hpp>
-#include <boost/uuid/uuid.hpp>
-#include <boost/container/map.hpp>
-#include <boost/tuple/tuple.hpp>
+#include <boost/unordered/unordered_map.hpp>
 // Local Includes
 #include "app/App.hxx"
 
@@ -74,6 +72,13 @@ App::~App()
 
 App::Response App::add(Entity *e)
 {
+    if (this->entities->find(e->getID()) != this->entities->end())
+    {
+        return { Response::APP_ENTY_PRESENT }
+    }
+
+
+
     return {Response::APP_SUCCESS};
 }
 

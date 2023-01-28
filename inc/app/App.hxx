@@ -10,7 +10,7 @@
 // Keep an eye on object counts for these containers.
 #include <boost/tuple/tuple.hpp>
 #include <boost/thread/shared_mutex.hpp>
-#include <boost/container/map.hpp>
+#include <boost/unordered/unordered_map.hpp>
 #include <boost/uuid/uuid.hpp>
 
 namespace TitanOfAir
@@ -131,10 +131,10 @@ namespace TitanOfAir
         typedef const boost::uuids::uuid EcsID;
         typedef boost::tuples::tuple<const Entity*, Response*> EntityTuple;
         typedef std::pair<EcsID*, EntityTuple> EntityPair;
-        typedef boost::container::map<EcsID *, EntityTuple> EntityContainer;
+        typedef boost::unordered::unordered_map<EcsID *, EntityTuple> EntityContainer;
         typedef boost::tuples::tuple<const Component*, Response*> ComponentTuple;
         typedef std::pair<EcsID*, ComponentTuple> ComponentPair;
-        typedef boost::container::map<EcsID *, ComponentTuple> ComponentContainer;
+        typedef boost::unordered::unordered_map<EcsID *, ComponentTuple> ComponentContainer;
 
     private:
         // ECS

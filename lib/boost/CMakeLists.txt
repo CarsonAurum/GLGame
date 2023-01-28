@@ -123,6 +123,8 @@ add_subdirectory(type_traits)
 add_subdirectory(typeof)
 
 add_subdirectory(unordered)
+set(UNORDERED_INC unordered/include)
+set(UNORDERED_LIB boost_unordered)
 
 add_subdirectory(utility)
 
@@ -141,6 +143,7 @@ set(BOOST_INCLUDE_DIRS
         ${CONTAINER_INC}
         ${SORT_INC}
         ${TUPLE_INC}
+        ${UNORDERED_INC}
         ${UUID_INC}
     PARENT_SCOPE)
 set(BOOST_LIBRARIES
@@ -148,5 +151,6 @@ set(BOOST_LIBRARIES
         ${CONTAINER_LIB}
         ${SORT_LIB}
         ${TUPLE_LIB}
+        ${UNORDERED_LIB}
         ${UUID_LIB}
     PARENT_SCOPE)
