@@ -72,12 +72,14 @@ App::~App()
 
 App::Response App::add(Entity *e)
 {
+    this->eMutex->lock_upgrade();
     if (this->entities->find(e->getID()) != this->entities->end())
     {
-        return { Response::APP_ENTY_PRESENT }
+        this->eMutex->unlock_upgrade();
+        return { Response::APP_ENTY_PRESENT };
     }
-
-
+    this->eMutex->unlock_upgrade_and_lock();
+    
 
     return {Response::APP_SUCCESS};
 }
