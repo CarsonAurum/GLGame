@@ -6,15 +6,18 @@
 #define TITANOFAIR_ENTITY_HXX
 
 // Libs
-#include "boost/uuid/uuid.hpp"
+#include <boost/uuid/uuid.hpp>
+#include <boost/unordered/unordered_set.hpp>
 // Local
-#include "api/ecs/components/Component.hxx"
+#include "api/ecs/ECS.hxx"
 
 namespace TitanOfAir
 {
     /**
-     * An abstract superclass representing an entities in the TitanOfAir ecs
-     * system.
+     * An abstract superclass representing an entities in the TitanOfAir ecs system.
+     *
+     * Entities should be placed dynamically on the heap, so their lifetime can be managed by the game's core
+     * ecs framework.
      */
     class Entity
     {
@@ -52,10 +55,11 @@ namespace TitanOfAir
          * Access a pointer to the ID associated with this object.
          * @return A constant pointer to the UUID for this object.
          */
-        const boost::uuids::uuid* getID() const;
+         const boost::uuids::uuid* getID() const;
 
     protected:
         const boost::uuids::uuid id;
+        boost::unordered::unordered_set<const boost::uuids::uuid*>* installed;
     };
 }
 

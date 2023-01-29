@@ -6,7 +6,6 @@
 #define TITANOFAIR_APP_HXX
 
 #include "api/ecs/ECS.hxx"
-#include "Response.hxx"
 // NOTE: These will become less efficient with more items.
 // Keep an eye on object counts for these containers.
 #include <boost/tuple/tuple.hpp>
@@ -69,7 +68,7 @@ namespace TitanOfAir
 
         bool has(Component *) const;
 
-        bool clearECS();
+        size_t clearECS();
 
     private:
         // ECS

@@ -58,12 +58,12 @@ Response App::init()
 App::~App()
 {
     eMutex->lock();
+    cMutex->lock();
     assert(this->entities->empty());
     delete this->entities;
     eMutex->unlock();
     delete eMutex;
 
-    cMutex->lock();
     assert(this->components->empty());
     delete this->components;
     cMutex->unlock();
@@ -138,7 +138,7 @@ Response App::remove(Component *c)
         return Response::APP_ENTY_NOT_PRESENT;
     }
     this->cMutex->unlock_upgrade_and_lock();
-    auto res = this->entities->erase(e->getID());
+    auto res = this->components->erase(c->getID());
     this->cMutex->unlock();
     if (res != 1)
         return Response::APP_ENTY_OP_ERROR;
@@ -165,16 +165,20 @@ bool App::has(Component *c) const
     return this->components->find(c->getID()) != this->components->end();
 }
 
-bool App::clearECS()
+size_t App::clearECS()
 {
+    size_t removed = 0;
     for(auto &entity : *entities)
+    {
         delete entity.second.get<0>(), entity.second.get<1>();
-
-    this->entities->clear();
+        ++removed;
+    }
 
     for (auto &component : *components)
+    {
         delete component.second.get<0>(), component.second.get<1>();
-
-    this->entities->clear();
+        ++removed;
+    }
+    return removed;
 }
 

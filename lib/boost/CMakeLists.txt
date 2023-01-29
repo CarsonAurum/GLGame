@@ -105,6 +105,8 @@ add_subdirectory(static_assert)
 add_subdirectory(system)
 
 add_subdirectory(thread)
+set(THREAD_INC thread/include)
+set(THREAD_SRC boost_thread)
 
 add_subdirectory(throw_exception)
 
@@ -139,18 +141,14 @@ add_subdirectory(variant2)
 add_subdirectory(winapi)
 
 set(BOOST_INCLUDE_DIRS
-        ${ALGORITHM_INC}
-        ${CONTAINER_INC}
-        ${SORT_INC}
         ${TUPLE_INC}
+        ${THREAD_INC}
         ${UNORDERED_INC}
         ${UUID_INC}
     PARENT_SCOPE)
 set(BOOST_LIBRARIES
-        ${ALGORITHM_LIB}
-        ${CONTAINER_LIB}
-        ${SORT_LIB}
         ${TUPLE_LIB}
+        ${THREAD_LIB}
         ${UNORDERED_LIB}
         ${UUID_LIB}
     PARENT_SCOPE)

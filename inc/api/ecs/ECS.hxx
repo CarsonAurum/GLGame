@@ -18,6 +18,7 @@ namespace TitanOfAir
     typedef boost::unordered::unordered_map<ID*, EntityTuple> EntityContainer;
     typedef boost::tuples::tuple<Component*, Response*> ComponentTuple;
     typedef boost::unordered::unordered_map<ID*, ComponentTuple> ComponentContainer;
+    typedef boost::unordered::unordered_set<ID*> IDSet;
 }
 
 #endif //TITANOFAIR_ECS_HXX

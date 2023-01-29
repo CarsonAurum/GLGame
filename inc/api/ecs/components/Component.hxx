@@ -7,6 +7,9 @@
 
 // Libs
 #include "boost/uuid/uuid.hpp"
+#include "api/ecs/ECS.hxx"
+
+using namespace TitanOfAir;
 
 namespace TitanOfAir
 {
@@ -51,7 +54,8 @@ namespace TitanOfAir
         const boost::uuids::uuid *getID();
 
     protected:
-        const boost::uuids::uuid *id;
+        const boost::uuids::uuid id;
+        boost::unordered::unordered_set<const boost::uuids::uuid*>* installed;
     };
 }
 
