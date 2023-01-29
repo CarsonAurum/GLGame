@@ -11,24 +11,20 @@
 using namespace TitanOfAir;
 
 
-Entity::Entity()
+Entity::Entity(): id{boost::uuids::random_generator{}()}
 {
-    // Make ID
-    auto generator = boost::uuids::random_generator{};
-    this->id = new boost::uuids::uuid{generator()};
     // Add to ECS
     auto res = App::shared()->add(this);
-    if(!res.is(App::Response::APP_ENTY_OP_SUCCESS))
+    if(!res.is(Response::APP_ENTY_OP_SUCCESS))
         throw boost::move(res);
 }
 
 Entity::~Entity()
 {
     App::shared()->remove(this);
-    delete id;
 }
 
-const boost::uuids::uuid *Entity::getID()
+const boost::uuids::uuid* Entity::getID() const
 {
-    return this->id;
+    return &this->id;
 }

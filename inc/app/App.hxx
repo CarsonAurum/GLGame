@@ -5,7 +5,8 @@
 #ifndef TITANOFAIR_APP_HXX
 #define TITANOFAIR_APP_HXX
 
-#include "api/ecs/entities/Entity.hxx"
+#include "api/ecs/ECS.hxx"
+#include "Response.hxx"
 // NOTE: These will become less efficient with more items.
 // Keep an eye on object counts for these containers.
 #include <boost/tuple/tuple.hpp>
@@ -23,64 +24,6 @@ namespace TitanOfAir
     class App
     {
     public:
-        // Types
-        class Response : public std::exception
-        {
-        public:
-            /**
-     * The ActionResult is a 4 digit code representing a more detailed response from
-     * functions within this class.
-     *
-     * Code List:
-     * [00xx]           =   General App Codes
-     *      [0000]          =   APP_SUCCESS
-     *      [0001]          =   APP_FAILURE
-     * [01xx]           =   Entity Codes
-     *      [0100]          =   APP_ENTY_OP_SUCCESS
-     *      [0101]          =   APP_ENTY_OP_ERROR
-     *      [0102]          =   APP_ENTY_PRESENT
-     *      [0103]          =   APP_ENTY_NOT_PRESENT
-     * [02xx]           =   Component Codes
-     *      [0200]          =   APP_CMPT_OP_SUCCESS
-     *      [0201]          =   APP_CMPT_OP_ERROR
-     *      [0202]          =   APP_CMPT_PRESENT
-     *      [0203]          =   APP_CMPT_NOT_PRESENT
-     *
-     * @see `inc/api/Except.hxx`
-     */
-            enum ActionResult
-            {
-                // [App General Codes 00xx]
-                APP_SUCCESS = 0000,
-                APP_FAILURE = 0001,
-
-
-                // [Entity Codes 01xx]
-                APP_ENTY_OP_SUCCESS = 0100,
-                APP_ENTY_OP_ERROR = 0101,
-                APP_ENTY_PRESENT = 0102,
-                APP_ENTY_NOT_PRESENT = 0103,
-                APP_ENTY_OK = 0104,
-
-                // [Component Codes 02xx]
-                APP_CMPT_OP_SUCCESS = 0200,
-                APP_CMPT_OP_ERROR = 0201,
-                APP_CMPT_PRESENT = 0202,
-                APP_CMPT_NOT_PRESENT = 0203,
-            };
-
-            Response();
-            Response(ActionResult);
-
-            virtual const char *what() const noexcept;
-
-            unsigned short getCode();
-
-            bool is(ActionResult);
-
-        private:
-            ActionResult cause;
-        };
         // Singleton API
         App(App &) = delete;
 
@@ -92,7 +35,7 @@ namespace TitanOfAir
          */
         static App *shared();
 
-        void init();
+        Response init();
 
         // Public Constants
         static constexpr const char *GAME_NAME = "Titan Of Air";
@@ -108,13 +51,13 @@ namespace TitanOfAir
 
         Response remove(Entity *);
 
-        Response getStatusFor(Entity *);
+        const Response* getStatusFor(Entity *) const;
 
         Response add(Component *);
 
         Response remove(Component *);
 
-        Response getStatusFor(Component *);
+        const Response* getStatusFor(Component *) const;
 
     protected:
         // Internal Usage Only
@@ -122,26 +65,18 @@ namespace TitanOfAir
 
         ~App();
 
-        bool hasEntity(Entity *);
+        bool has(Entity *) const;
 
-        bool hasComponent(Component *);
+        bool has(Component *) const;
 
         bool clearECS();
 
-        typedef const boost::uuids::uuid EcsID;
-        typedef boost::tuples::tuple<const Entity*, Response*> EntityTuple;
-        typedef std::pair<EcsID*, EntityTuple> EntityPair;
-        typedef boost::unordered::unordered_map<EcsID *, EntityTuple> EntityContainer;
-        typedef boost::tuples::tuple<const Component*, Response*> ComponentTuple;
-        typedef std::pair<EcsID*, ComponentTuple> ComponentPair;
-        typedef boost::unordered::unordered_map<EcsID *, ComponentTuple> ComponentContainer;
-
     private:
         // ECS
-        boost::shared_mutex *eMutex;
-        EntityContainer *entities;
-        boost::shared_mutex *cMutex;
-        ComponentContainer *components;
+        boost::shared_mutex* eMutex;
+        EntityContainer* entities;
+        boost::shared_mutex* cMutex;
+        ComponentContainer* components;
     };
 }
 

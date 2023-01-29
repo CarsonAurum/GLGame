@@ -48,10 +48,11 @@ App::App()
     this->components = new ComponentContainer{};
 }
 
-void App::init()
+Response App::init()
 {
     this->eMutex->unlock();
     this->cMutex->unlock();
+    return Response::APP_SUCCESS;
 }
 
 App::~App()
@@ -70,102 +71,102 @@ App::~App()
 }
 
 
-App::Response App::add(Entity *e)
+Response App::add(Entity *e)
 {
     this->eMutex->lock_upgrade();
-    if (this->entities->find(e->getID()) != this->entities->end())
+    if (has(e))
     {
         this->eMutex->unlock_upgrade();
-        return { Response::APP_ENTY_PRESENT };
+        return  Response::APP_ENTY_PRESENT;
     }
     this->eMutex->unlock_upgrade_and_lock();
-    
-
-    return {Response::APP_SUCCESS};
+    auto res = this->entities->emplace(e->getID(), EntityTuple{e, new Response{}});
+    this->eMutex->unlock();
+    if (!res.second)
+        return Response::APP_ENTY_OP_ERROR;
+    return Response::APP_ENTY_OP_SUCCESS;
 }
 
-App::Response App::remove(Entity *e)
+Response App::remove(Entity *e)
 {
-
-    return {Response::APP_SUCCESS};
+    this->eMutex->lock_upgrade();
+    if (!has(e))
+    {
+        this->eMutex->unlock_upgrade();
+        return Response::APP_ENTY_NOT_PRESENT;
+    }
+    this->eMutex->unlock_upgrade_and_lock();
+    auto res = this->entities->erase(e->getID());
+    this->eMutex->unlock();
+    if (res != 1)
+        return Response::APP_ENTY_OP_ERROR;
+    return Response::APP_ENTY_OP_SUCCESS;
 }
 
-App::Response App::getStatusFor(Entity *e)
+const Response* App::getStatusFor(Entity *e) const
 {
-    return {Response::APP_SUCCESS};
+    this->eMutex->lock_shared();
+    if (!has(e))
+        return nullptr;
+    auto data = this->entities->at(e->getID());
+    this->eMutex->unlock_shared();
+    return const_cast<const Response*>(data.get<1>());
 }
 
-App::Response App::add(Component *c)
+Response App::add(Component *c)
 {
-    return {Response::APP_SUCCESS};
+    this->cMutex->lock_upgrade();
+    if (has(c))
+    {
+        this->cMutex->unlock_upgrade();
+        return  Response::APP_ENTY_PRESENT;
+    }
+    this->cMutex->unlock_upgrade_and_lock();
+    auto res = this->components->emplace(c->getID(), ComponentTuple{c, new Response{}});
+    this->cMutex->unlock();
+    if (!res.second)
+        return Response::APP_ENTY_OP_ERROR;
+    return Response::APP_ENTY_OP_SUCCESS;
 }
 
-App::Response App::remove(Component *c)
+Response App::remove(Component *c)
 {
-    return {Response::APP_SUCCESS};
+    this->cMutex->lock_upgrade();
+    if (!has(c))
+    {
+        this->cMutex->unlock_upgrade();
+        return Response::APP_ENTY_NOT_PRESENT;
+    }
+    this->cMutex->unlock_upgrade_and_lock();
+    auto res = this->entities->erase(e->getID());
+    this->cMutex->unlock();
+    if (res != 1)
+        return Response::APP_ENTY_OP_ERROR;
+    return Response::APP_ENTY_OP_SUCCESS;
 }
 
-App::Response App::getStatusFor(Component *c)
+const Response* App::getStatusFor(Component *c) const
 {
-    return {Response::APP_SUCCESS};
+    this->cMutex->lock_shared();
+    if (!has(c))
+        return nullptr;
+    auto data = this->components->at(c->getID());
+    this->cMutex->unlock_shared();
+    return const_cast<const Response*>(data.get<1>());
 }
 
-bool App::hasEntity(Entity *e)
+bool App::has(Entity *e) const
 {
-    return false;
+    return this->entities->find(e->getID()) != this->entities->end();
 }
 
-bool App::hasComponent(Component *c)
+bool App::has(Component *c) const
 {
-    return false;
+    return this->components->find(c->getID()) != this->components->end();
 }
 
 bool App::clearECS()
 {
     return false;
-}
-
-// App Response
-
-App::Response::Response()
-{
-    this->cause = APP_ENTY_OK;
-}
-
-App::Response::Response(ActionResult cause)
-{
-    this->cause = cause;
-}
-
-const char *App::Response::what() const noexcept
-{
-    switch (this->cause)
-    {
-        case ActionResult::APP_SUCCESS: return "App Success";
-        case ActionResult::APP_FAILURE: return "App Failure";
-
-        case ActionResult::APP_ENTY_OP_SUCCESS: return "Entity Operation Success";
-        case ActionResult::APP_ENTY_OP_ERROR: return "Entity Operation Failure";
-        case ActionResult::APP_ENTY_PRESENT: return "Entity Present";
-        case ActionResult::APP_ENTY_NOT_PRESENT: return "Entity Not Present";
-
-        case ActionResult::APP_CMPT_OP_SUCCESS: return "Component Operation Success";
-        case ActionResult::APP_CMPT_OP_ERROR: return "Component Operation Failure";
-        case ActionResult::APP_CMPT_PRESENT: return "Component Present";
-        case ActionResult::APP_CMPT_NOT_PRESENT: return "Component Not Present";
-
-        default: return "";
-
-    }
-}
-
-unsigned short App::Response::getCode()
-{
-    return this->cause;
-}
-
-bool App::Response::is(App::Response::ActionResult res)
-{
-    return this->getCode() == res;
 }
 

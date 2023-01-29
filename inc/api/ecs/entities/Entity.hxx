@@ -52,10 +52,10 @@ namespace TitanOfAir
          * Access a pointer to the ID associated with this object.
          * @return A constant pointer to the UUID for this object.
          */
-        const boost::uuids::uuid *getID();
+        const boost::uuids::uuid* getID() const;
 
     protected:
-        const boost::uuids::uuid *id;
+        const boost::uuids::uuid id;
     };
 }
 
