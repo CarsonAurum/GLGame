@@ -167,6 +167,14 @@ bool App::has(Component *c) const
 
 bool App::clearECS()
 {
-    return false;
+    for(auto &entity : *entities)
+        delete entity.second.get<0>(), entity.second.get<1>();
+
+    this->entities->clear();
+
+    for (auto &component : *components)
+        delete component.second.get<0>(), component.second.get<1>();
+
+    this->entities->clear();
 }
 
