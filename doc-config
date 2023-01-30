@@ -28,32 +28,46 @@
 #---------------------------------------------------------------------------
 
 # This tag specifies the encoding used for all characters in the configuration
-# file that follow.
+# file that follow. The default is UTF-8 which is also the encoding used for all
+# text before the first occurrence of this tag. Doxygen uses libiconv (or the
+# iconv built into libc) for the transcoding. See
+# https://www.gnu.org/software/libiconv/ for the list of possible encodings.
+# The default value is: UTF-8.
+
 DOXYFILE_ENCODING      = UTF-8
 
 # The PROJECT_NAME tag is a single word (or a sequence of words surrounded by
 # double-quotes, unless you are using Doxywizard) that should identify the
-# project for which the documentation is generated.
+# project for which the documentation is generated. This name is used in the
+# title of most generated pages and in a few other places.
+# The default value is: My Project.
+
 PROJECT_NAME           = "Titan Of Air"
 
-# The PROJECT_NUMBER tag can be used to enter a project or revision number.
+# The PROJECT_NUMBER tag can be used to enter a project or revision number. This
+# could be handy for archiving the generated documentation or if some version
+# control system is used.
+
 PROJECT_NUMBER         =
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
-# quick idea about the purpose of the project.
+# quick idea about the purpose of the project. Keep the description short.
+
 PROJECT_BRIEF          =
 
 # With the PROJECT_LOGO tag one can specify a logo or an icon that is included
 # in the documentation. The maximum height of the logo should not exceed 55
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
+
 PROJECT_LOGO           =
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
 # entered, it will be relative to the location where doxygen was started. If
 # left blank the current directory will be used.
+
 OUTPUT_DIRECTORY       = doc
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create up to 4096
@@ -61,7 +75,10 @@ OUTPUT_DIRECTORY       = doc
 # and will distribute the generated files over these directories. Enabling this
 # option can be useful when feeding doxygen a huge amount of source files, where
 # putting all generated files in the same directory would otherwise causes
-# performance problems for the file system.
+# performance problems for the file system. Adapt CREATE_SUBDIRS_LEVEL to
+# control the number of sub-directories.
+# The default value is: NO.
+
 CREATE_SUBDIRS         = NO
 
 # Controls the number of sub-directories that will be created when
@@ -72,12 +89,15 @@ CREATE_SUBDIRS         = NO
 # number of 16 directories.
 # Minimum value: 0, maximum value: 8, default value: 8.
 # This tag requires that the tag CREATE_SUBDIRS is set to YES.
+
 CREATE_SUBDIRS_LEVEL   = 8
 
 # If the ALLOW_UNICODE_NAMES tag is set to YES, doxygen will allow non-ASCII
 # characters to appear in the names of generated files. If set to NO, non-ASCII
 # characters will be escaped, for example _xE3_x81_x84 will be used for Unicode
 # U+3044.
+# The default value is: NO.
+
 ALLOW_UNICODE_NAMES    = NO
 
 # The OUTPUT_LANGUAGE tag is used to specify the language in which all
@@ -897,7 +917,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  =
+INPUT                  = TitanOfAir
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -997,7 +1017,8 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = lib lib/*
+EXCLUDE                = lib \
+                         lib/*
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
@@ -1207,6 +1228,46 @@ USE_HTAGS              = NO
 # The default value is: YES.
 
 VERBATIM_HEADERS       = YES
+
+# If the CLANG_ASSISTED_PARSING tag is set to YES then doxygen will use the
+# clang parser (see:
+# http://clang.llvm.org/) for more accurate parsing at the cost of reduced
+# performance. This can be particularly helpful with template rich C++ code for
+# which doxygen's built-in parser lacks the necessary type information.
+# Note: The availability of this option depends on whether or not doxygen was
+# generated with the -Duse_libclang=ON option for CMake.
+# The default value is: NO.
+
+CLANG_ASSISTED_PARSING = NO
+
+# If the CLANG_ASSISTED_PARSING tag is set to YES and the CLANG_ADD_INC_PATHS
+# tag is set to YES then doxygen will add the directory of each input to the
+# include path.
+# The default value is: YES.
+# This tag requires that the tag CLANG_ASSISTED_PARSING is set to YES.
+
+CLANG_ADD_INC_PATHS    = YES
+
+# If clang assisted parsing is enabled you can provide the compiler with command
+# line options that you would normally use when invoking the compiler. Note that
+# the include paths will already be set by doxygen for the files and directories
+# specified with INPUT and INCLUDE_PATH.
+# This tag requires that the tag CLANG_ASSISTED_PARSING is set to YES.
+
+CLANG_OPTIONS          =
+
+# If clang assisted parsing is enabled you can provide the clang parser with the
+# path to the directory containing a file called compile_commands.json. This
+# file is the compilation database (see:
+# http://clang.llvm.org/docs/HowToSetupToolingForLLVM.html) containing the
+# options used when the source files were built. This is equivalent to
+# specifying the -p option to a clang tool, such as clang-check. These options
+# will then be passed to the parser. Any options specified with CLANG_OPTIONS
+# will be added as well.
+# Note: The availability of this option depends on whether or not doxygen was
+# generated with the -Duse_libclang=ON option for CMake.
+
+CLANG_DATABASE_PATH    =
 
 #---------------------------------------------------------------------------
 # Configuration options related to the alphabetical class index
@@ -2215,6 +2276,10 @@ DOCBOOK_OUTPUT         = docbook
 GENERATE_AUTOGEN_DEF   = NO
 
 #---------------------------------------------------------------------------
+# Configuration options related to Sqlite3 output
+#---------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------
 # Configuration options related to the Perl module output
 #---------------------------------------------------------------------------
 
@@ -2401,7 +2466,7 @@ HIDE_UNDOC_RELATIONS   = YES
 # set to NO
 # The default value is: NO.
 
-HAVE_DOT               = NO
+HAVE_DOT               = YES
 
 # The DOT_NUM_THREADS specifies the number of dot invocations doxygen is allowed
 # to run in parallel. When set to 0 doxygen will base this on the number of

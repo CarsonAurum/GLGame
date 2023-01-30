@@ -4,12 +4,12 @@ project(TitanOfAir)
 set(CMAKE_CXX_STANDARD 20)
 
 # Project Sources + Headers
-add_subdirectory(inc)
-add_subdirectory(src)
+add_subdirectory(TitanOfAir/inc)
+add_subdirectory(TitanOfAir/src)
 
 # Declare Deliverable
 add_executable(TitanOfAir ${TOA_HEADERS} ${TOA_SRCS})
-target_include_directories(TitanOfAir PRIVATE inc)
+target_include_directories(TitanOfAir PRIVATE TitanOfAir/inc)
 
 # Add Dependencies To Target
 add_subdirectory(lib)
