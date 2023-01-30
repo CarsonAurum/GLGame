@@ -33,7 +33,7 @@ namespace TitanOfAir::ECS
         /**
          * The move constructor for relocating the given object.
          */
-        Component(const Component &&);
+        Component(Component &&);
 
         /**
          * The copy assignment operator for duplicating this object.
@@ -43,7 +43,7 @@ namespace TitanOfAir::ECS
         /**
          * The move assignment operator for relocating this object.
          */
-        void operator=(const Component &&);
+        void operator=(Component &&);
 
         /**
          * The destructor for this object.

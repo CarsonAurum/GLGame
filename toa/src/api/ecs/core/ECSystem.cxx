@@ -60,7 +60,7 @@ Response ECSystem::add(Entity * e, Response * r)
         return  Response::APP_ENTY_PRESENT;
     }
     this->eMutex->unlock_upgrade_and_lock();
-    auto res = this->entities->emplace(e->getID(), EntityTuple{e, r});
+    auto res = this->entities->emplace(e->id, EntityTuple{e, r});
     this->eMutex->unlock();
     if (!res.second)
         return Response::APP_ENTY_OP_ERROR;
@@ -76,7 +76,7 @@ Response ECSystem::remove(Entity * e)
         return Response::APP_ENTY_NOT_PRESENT;
     }
     this->eMutex->unlock_upgrade_and_lock();
-    auto res = this->entities->erase(e->getID());
+    auto res = this->entities->erase(e->id);
     this->eMutex->unlock();
     if (res != 1)
         return Response::APP_ENTY_OP_ERROR;
@@ -85,7 +85,7 @@ Response ECSystem::remove(Entity * e)
 
 bool ECSystem::has(Entity * e) const
 {
-    return this->entities->find(e->getID()) != this->entities->end();
+    return this->entities->find(e->id) != this->entities->end();
 }
 
 const Response *ECSystem::getStatus(Entity * e) const
@@ -93,7 +93,7 @@ const Response *ECSystem::getStatus(Entity * e) const
     this->eMutex->lock_shared();
     if (!has(e))
         return nullptr;
-    auto data = this->entities->at(e->getID());
+    auto data = this->entities->at(e->id);
     this->eMutex->unlock_shared();
     return const_cast<const Response*>(data.get<1>());
 }

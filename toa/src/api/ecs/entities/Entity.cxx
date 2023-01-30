@@ -2,8 +2,10 @@
 // Carson R - 1/23/23
 //
 
-#include "boost/uuid/uuid.hpp"
-#include "boost/uuid/uuid_generators.hpp"
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_io.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/thread/shared_mutex.hpp>
 
 #include "app/App.hxx"
 #include "api/ecs/core/ECS.hxx"
@@ -14,19 +16,28 @@ using namespace TitanOfAir::ECS;
 
 Entity::Entity()
 {
-    // Add to ECS
     this->id = new ID{boost::uuids::random_generator{}()};
     this->installed = new IDSet{};
     this->mut = new boost::shared_mutex{};
     this->ret = new Response{};
 }
 
-Entity::Entity(const Entity & e)
+Entity::Entity(const Entity &e)
 {
     this->id = new ID{*e.id};
     this->installed = new IDSet{*e.installed};
     this->mut = new boost::shared_mutex{};
-    this->ret = new Response{e.ret};
+    this->ret = new Response{*e.ret};
+}
+
+Entity::Entity(Entity &&e) noexcept
+{
+    this->id = e.id;
+    this->installed = e.installed;
+    this->mut = new boost::shared_mutex{};
+    this->ret = e.ret;
+    e.id = nullptr, e.installed = nullptr, e.mut = nullptr, e.ret = nullptr;
+
 }
 
 Entity::~Entity()
@@ -37,12 +48,12 @@ Entity::~Entity()
     delete installed;
 }
 
-const boost::uuids::uuid* Entity::getID() const
+std::string Entity::getID() const
 {
-    return this->id;
+    return boost::uuids::to_string(*this->id);
 }
 
-void Entity::add(Component * c)
+void Entity::add(Component *c)
 {
     this->mut->lock_upgrade();
     if (installed->contains(c->getID()))
