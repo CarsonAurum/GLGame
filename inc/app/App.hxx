@@ -5,9 +5,7 @@
 #ifndef TITANOFAIR_APP_HXX
 #define TITANOFAIR_APP_HXX
 
-#include "api/ecs/ECS.hxx"
-// NOTE: These will become less efficient with more items.
-// Keep an eye on object counts for these containers.
+#include "api/ecs/ECSystem.hxx"
 #include <boost/tuple/tuple.hpp>
 #include <boost/thread/shared_mutex.hpp>
 #include <boost/unordered/unordered_map.hpp>
@@ -41,41 +39,11 @@ namespace TitanOfAir
         static constexpr const char *APP_NAME = "titan_of_air";
         static constexpr const char *LOG = "TitanOfAir";
 
-        // ECS
-        std::size_t eCount();
-
-        std::size_t cCount();
-
-        Response add(Entity *, Response*);
-
-        Response remove(Entity *);
-
-        const Response* getStatusFor(Entity *) const;
-
-        Response add(Component *, Response*);
-
-        Response remove(Component *);
-
-        const Response* getStatusFor(Component *) const;
-
     protected:
         // Internal Usage Only
         App();
 
         ~App();
-
-        bool has(Entity *) const;
-
-        bool has(Component *) const;
-
-        size_t clearECS();
-
-    private:
-        // ECS
-        boost::shared_mutex* eMutex;
-        EntityContainer* entities;
-        boost::shared_mutex* cMutex;
-        ComponentContainer* components;
     };
 }
 

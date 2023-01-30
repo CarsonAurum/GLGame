@@ -4,6 +4,8 @@
 
 #include "app/Response.hxx"
 
+using namespace TitanOfAir;
+
 Response::Response()
 {
     this->cause = APP_ENTY_OK;

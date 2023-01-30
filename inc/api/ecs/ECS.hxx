@@ -5,14 +5,15 @@
 #ifndef TITANOFAIR_ECS_HXX
 #define TITANOFAIR_ECS_HXX
 
+#include <boost/unordered/unordered_set.hpp>
 #include <boost/unordered/unordered_map.hpp>
-
-#include "app/Response.hxx"
-#include "entities/Entity.hxx"
-#include "components/Component.hxx"
 
 namespace TitanOfAir
 {
+    class Entity;
+    class Component;
+    class Response;
+
     typedef const boost::uuids::uuid ID;
     typedef const boost::tuples::tuple<Entity*, Response*> EntityTuple;
     typedef boost::unordered::unordered_map<ID*, EntityTuple> EntityContainer;

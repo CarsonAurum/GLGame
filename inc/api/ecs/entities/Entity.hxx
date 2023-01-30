@@ -59,7 +59,7 @@ namespace TitanOfAir
          */
          [[nodiscard]] const boost::uuids::uuid* getID() const;
 
-         void add(Component*, bool = true);
+         void add(Component*);
 
     protected:
         const boost::uuids::uuid id;
