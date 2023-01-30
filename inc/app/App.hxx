@@ -46,13 +46,13 @@ namespace TitanOfAir
 
         std::size_t cCount();
 
-        Response add(Entity *);
+        Response add(Entity *, Response*);
 
         Response remove(Entity *);
 
         const Response* getStatusFor(Entity *) const;
 
-        Response add(Component *);
+        Response add(Component *, Response*);
 
         Response remove(Component *);
 

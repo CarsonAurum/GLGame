@@ -8,8 +8,7 @@
 // Libs
 #include "boost/uuid/uuid.hpp"
 #include "api/ecs/ECS.hxx"
-
-using namespace TitanOfAir;
+#include "boost/thread/shared_mutex.hpp"
 
 namespace TitanOfAir
 {
@@ -51,10 +50,12 @@ namespace TitanOfAir
          * Access a pointer to the ID associated with this object.
          * @return A constant pointer to the UUID for this object.
          */
-        const boost::uuids::uuid *getID();
+        [[nodiscard]] const boost::uuids::uuid *getID();
 
     protected:
         const boost::uuids::uuid id;
+        Response* ret;
+        boost::shared_mutex*  mut;
         boost::unordered::unordered_set<const boost::uuids::uuid*>* installed;
     };
 }

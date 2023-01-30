@@ -71,7 +71,7 @@ App::~App()
 }
 
 
-Response App::add(Entity *e)
+Response App::add(Entity *e, Response* r)
 {
     this->eMutex->lock_upgrade();
     if (has(e))
@@ -80,7 +80,7 @@ Response App::add(Entity *e)
         return  Response::APP_ENTY_PRESENT;
     }
     this->eMutex->unlock_upgrade_and_lock();
-    auto res = this->entities->emplace(e->getID(), EntityTuple{e, new Response{}});
+    auto res = this->entities->emplace(e->getID(), EntityTuple{e, r});
     this->eMutex->unlock();
     if (!res.second)
         return Response::APP_ENTY_OP_ERROR;
@@ -113,7 +113,7 @@ const Response* App::getStatusFor(Entity *e) const
     return const_cast<const Response*>(data.get<1>());
 }
 
-Response App::add(Component *c)
+Response App::add(Component *c, Response* r)
 {
     this->cMutex->lock_upgrade();
     if (has(c))
@@ -122,7 +122,7 @@ Response App::add(Component *c)
         return  Response::APP_ENTY_PRESENT;
     }
     this->cMutex->unlock_upgrade_and_lock();
-    auto res = this->components->emplace(c->getID(), ComponentTuple{c, new Response{}});
+    auto res = this->components->emplace(c->getID(), ComponentTuple{c, r});
     this->cMutex->unlock();
     if (!res.second)
         return Response::APP_ENTY_OP_ERROR;
@@ -167,18 +167,21 @@ bool App::has(Component *c) const
 
 size_t App::clearECS()
 {
+    this->eMutex->lock();
     size_t removed = 0;
     for(auto &entity : *entities)
     {
         delete entity.second.get<0>(), entity.second.get<1>();
         ++removed;
     }
-
+    this->eMutex->unlock();
+    this->cMutex->lock();
     for (auto &component : *components)
     {
         delete component.second.get<0>(), component.second.get<1>();
         ++removed;
     }
+    this->cMutex->unlock();
     return removed;
 }
 

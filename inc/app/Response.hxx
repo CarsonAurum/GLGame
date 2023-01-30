@@ -6,8 +6,9 @@
 #define TITANOFAIR_RESPONSE_HXX
 
 #include <boost/exception/exception.hpp>
+#include <exception>
 
-class Response : public boost::exception::exception
+class Response : public boost::exception::exception, std::exception
 {
 public:
     /**
@@ -60,6 +61,9 @@ public:
     unsigned short getCode();
 
     bool is(ActionResult);
+protected:
+    friend class Entity;
+    friend class Component;
 
 private:
     ActionResult cause;

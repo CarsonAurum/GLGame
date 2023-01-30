@@ -10,6 +10,8 @@
 #include <boost/unordered/unordered_set.hpp>
 // Local
 #include "api/ecs/ECS.hxx"
+#include "api/ecs/components/Component.hxx"
+#include "boost/thread/shared_mutex.hpp"
 
 namespace TitanOfAir
 {
@@ -55,10 +57,14 @@ namespace TitanOfAir
          * Access a pointer to the ID associated with this object.
          * @return A constant pointer to the UUID for this object.
          */
-         const boost::uuids::uuid* getID() const;
+         [[nodiscard]] const boost::uuids::uuid* getID() const;
+
+         void add(Component*, bool = true);
 
     protected:
         const boost::uuids::uuid id;
+        Response* ret;
+        boost::shared_mutex*  mut;
         boost::unordered::unordered_set<const boost::uuids::uuid*>* installed;
     };
 }
