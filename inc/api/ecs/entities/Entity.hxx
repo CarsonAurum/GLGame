@@ -32,17 +32,22 @@ namespace TitanOfAir::ECS
         /**
          * The copy constructor for copying this object.
          */
-        Entity(const Entity &) = delete;
+        Entity(const Entity &);
 
         /**
          * The move constructor for relocating this object.
          */
-        Entity(Entity &&) = delete;
+        Entity(const Entity &&);
 
         /**
-         * The copy assignment operator for relocating this object.
+         * The copy assignment operator for duplicating this entity.
          */
-        void operator=(const Entity &) = delete;
+        void operator=(const Entity &);
+
+        /**
+         * The move assignment operator for relocating this entity.
+         */
+        void operator=(const Entity&&);
 
         /**
          * The destructor for this object will remove itself from the shared ECS system manager
@@ -59,7 +64,7 @@ namespace TitanOfAir::ECS
          void add(Component*);
 
     protected:
-        const boost::uuids::uuid id;
+        const boost::uuids::uuid* id;
         Response* ret;
         boost::shared_mutex*  mut;
         boost::unordered::unordered_set<const boost::uuids::uuid*>* installed;
