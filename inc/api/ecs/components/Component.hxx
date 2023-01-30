@@ -7,42 +7,46 @@
 
 // Libs
 #include "boost/uuid/uuid.hpp"
-#include "api/ecs/ECS.hxx"
+#include "api/ecs/core/ECS.hxx"
 #include "boost/thread/shared_mutex.hpp"
 
-namespace TitanOfAir
+namespace TitanOfAir::ECS
 {
     /**
-     * An abstract superclass representing a component in the TitanOfAir ecs
-     * system.
+     * An abstract superclass representing a component in the TitanOfAir ECS system.
+     * Entities should be placed dynamically on the heap, so their lifetime can be managed by the
+     * game's core ecs framework.
      */
     class Component
     {
     public:
         /**
-         * The default constructor creates the id.
-         * @note This constructor should be called from all implementing classes.
+         * The default constructor creates the id for this component.
          */
         Component();
 
         /**
-         * The copy constructor for copying this object. Explicitly disallowed.
+         * The copy constructor for duplicating the given object.
          */
-        Component(const Component &) = delete;
+        Component(const Component &);
 
         /**
-         * The move constructor for relocating this object. Explicitly disallowed.
+         * The move constructor for relocating the given object.
          */
-        Component(Component &&) = delete;
+        Component(Component &&);
 
         /**
-         * The copy assignment operator for relocating this object. Explicitly disallowed.
+         * The copy assignment operator for duplicating this object.
          */
-        void operator=(const Component &) = delete;
+        void operator=(const Component &);
 
         /**
-         * The destructor for this object will remove itself from the shared ECS system manager
-         * before releasing its resources.
+         * The move assignment operator for relocating this object.
+         */
+        void operator=(const Component &&);
+
+        /**
+         * The destructor for this object.
          */
         ~Component();
 
@@ -54,9 +58,9 @@ namespace TitanOfAir
 
     protected:
         const boost::uuids::uuid id;
-        Response* ret;
-        boost::shared_mutex*  mut;
-        boost::unordered::unordered_set<const boost::uuids::uuid*>* installed;
+        Response *ret;
+        boost::shared_mutex *mut;
+        boost::unordered::unordered_set<const boost::uuids::uuid *> *installed;
     };
 }
 

@@ -23,8 +23,10 @@ App *App::shared()
 App::App()
 {}
 
-Response App::init()
-{}
+bool App::init()
+{
+    return true;
+}
 
 App::~App()
 {}

@@ -8,7 +8,7 @@
 #include "app/App.hxx"
 #include "api/ecs/entities/Entity.hxx"
 
-using namespace TitanOfAir;
+using namespace TitanOfAir::ECS;
 
 
 Entity::Entity(): id{boost::uuids::random_generator{}()}

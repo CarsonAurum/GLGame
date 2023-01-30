@@ -9,11 +9,11 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/unordered/unordered_set.hpp>
 // Local
-#include "api/ecs/ECS.hxx"
+#include "api/ecs/core/ECS.hxx"
 #include "api/ecs/components/Component.hxx"
 #include "boost/thread/shared_mutex.hpp"
 
-namespace TitanOfAir
+namespace TitanOfAir::ECS
 {
     /**
      * An abstract superclass representing an entities in the TitanOfAir ecs system.
@@ -25,25 +25,22 @@ namespace TitanOfAir
     {
     public:
         /**
-         * The default constructor creates the id and registers this entity with the ECS system
-         * manager.
-         *
-         * @throws TitanOfAir::Exception If the entity cannot be added to the global ECS system.
+         * The default constructor creates the id and initializes internal mechanisms.
          */
         Entity();
 
         /**
-         * The copy constructor for copying this object. Explicitly disallowed.
+         * The copy constructor for copying this object.
          */
         Entity(const Entity &) = delete;
 
         /**
-         * The move constructor for relocating this object. Explicitly disallowed.
+         * The move constructor for relocating this object.
          */
         Entity(Entity &&) = delete;
 
         /**
-         * The copy assignment operator for relocating this object. Explicitly disallowed.
+         * The copy assignment operator for relocating this object.
          */
         void operator=(const Entity &) = delete;
 

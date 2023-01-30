@@ -2,11 +2,11 @@
 // Carson R - 1/30/2023
 //
 
-#include "api/ecs/ECSystem.hxx"
+#include "api/ecs/systems/ECSystem.hxx"
 #include "api/ecs/entities/Entity.hxx"
 #include "api/ecs/components/Component.hxx"
 
-using namespace TitanOfAir;
+using namespace TitanOfAir::ECS;
 
 ECSystem::ECSystem()
 {

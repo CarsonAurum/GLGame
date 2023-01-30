@@ -5,11 +5,7 @@
 #ifndef TITANOFAIR_APP_HXX
 #define TITANOFAIR_APP_HXX
 
-#include "api/ecs/ECSystem.hxx"
-#include <boost/tuple/tuple.hpp>
-#include <boost/thread/shared_mutex.hpp>
-#include <boost/unordered/unordered_map.hpp>
-#include <boost/uuid/uuid.hpp>
+#include "api/ecs/systems/ECSystem.hxx"
 
 namespace TitanOfAir
 {
@@ -32,7 +28,7 @@ namespace TitanOfAir
          */
         static App *shared();
 
-        Response init();
+        bool init();
 
         // Public Constants
         static constexpr const char *GAME_NAME = "Titan Of Air";

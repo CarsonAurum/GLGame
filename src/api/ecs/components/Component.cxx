@@ -7,9 +7,9 @@
 #include "boost/uuid/uuid_generators.hpp"
 // Local
 #include "app/App.hxx"
-#include "api/ecs/ECS.hxx"
+#include "api/ecs/core/ECS.hxx"
 
-using namespace TitanOfAir;
+using namespace TitanOfAir::ECS;
 
 Component::Component(): id{boost::uuids::random_generator{}()}
 {

@@ -5,14 +5,25 @@
 #ifndef TITANOFAIR_RESPONSE_HXX
 #define TITANOFAIR_RESPONSE_HXX
 
-#include <boost/exception/exception.hpp>
+#include "boost/exception/exception.hpp"
 #include <exception>
 
-namespace TitanOfAir
+namespace TitanOfAir::ECS
 {
     class Entity;
+
     class Component;
 
+    /**
+     * A response contains data about the result of an operation performed within the ECS context.
+     *
+     * Responses are exceptions that are typically returned or passed to be queried. In the event
+     * that immediate handling of a response is required, the c++ exception mechanics are fully
+     * accessible using objects of this type.
+     *
+     * Each response relies on an underlying `ActionResult` that classifies responses into multiple
+     * different error domains represented by 4-digit integer values.
+     */
     class Response : public boost::exception::exception, std::exception
     {
     public:
@@ -52,7 +63,7 @@ namespace TitanOfAir
             APP_ENTY_OK = 104,
             ENTY_CMPT_PRESENT = 105,
             ENTY_CMPT_NOT_PRESENT = 106,
-            ENTY_CMPT_OP_OK  = 107,
+            ENTY_CMPT_OP_OK = 107,
             ENTY_CMPT_OP_ERROR = 108,
             // [Component Codes 02xx]
             APP_CMPT_OP_SUCCESS = 200,

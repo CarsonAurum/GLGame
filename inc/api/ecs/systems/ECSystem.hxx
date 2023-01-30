@@ -5,17 +5,17 @@
 #ifndef TITANOFAIR_ECSYSTEM_HXX
 #define TITANOFAIR_ECSYSTEM_HXX
 
-#include <boost/tuple/tuple.hpp>
-#include <boost/thread/shared_mutex.hpp>
-#include <boost/unordered/unordered_map.hpp>
-#include <boost/uuid/uuid.hpp>
+#include "boost/tuple/tuple.hpp"
+#include "boost/thread/shared_mutex.hpp"
+#include "boost/unordered/unordered_map.hpp"
+#include "boost/uuid/uuid.hpp"
 
 #include "api/ecs/components/Component.hxx"
 #include "api/ecs/entities/Entity.hxx"
-#include "app/Response.hxx"
-#include "api/ecs/ECS.hxx"
+#include "api/ecs/core/Response.hxx"
+#include "api/ecs/core/ECS.hxx"
 
-namespace TitanOfAir
+namespace TitanOfAir::ECS
 {
     class ECSystem
     {

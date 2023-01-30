@@ -8,7 +8,7 @@ add_subdirectory(inc)
 add_subdirectory(src)
 
 # Declare Deliverable
-add_executable(TitanOfAir ${TOA_HEADERS} ${TOA_SRCS} inc/app/Response.hxx)
+add_executable(TitanOfAir ${TOA_HEADERS} ${TOA_SRCS} inc/api/ecs/core/Response.hxx)
 target_include_directories(TitanOfAir PRIVATE inc)
 
 # Add Dependencies To Target

@@ -2,13 +2,13 @@
 // Created by Carson Rau on 1/28/23.
 //
 
-#include "app/Response.hxx"
+#include "api/ecs/core/Response.hxx"
 
-using namespace TitanOfAir;
+using namespace TitanOfAir::ECS;
 
 Response::Response()
 {
-    this->cause = APP_ENTY_OK;
+    this->cause = APP_SUCCESS;
 }
 
 Response::Response(ActionResult cause)
