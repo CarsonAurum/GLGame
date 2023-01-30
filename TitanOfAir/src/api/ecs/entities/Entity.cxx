@@ -21,6 +21,14 @@ Entity::Entity()
     this->ret = new Response{};
 }
 
+Entity::Entity(const Entity & e)
+{
+    this->id = new ID{*e.id};
+    this->installed = new IDSet{*e.installed};
+    this->mut = new boost::shared_mutex{};
+    this->ret = new Response{e.ret};
+}
+
 Entity::~Entity()
 {
     delete id;

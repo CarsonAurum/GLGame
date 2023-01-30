@@ -5,7 +5,7 @@
 #ifndef TITANOFAIR_APP_HXX
 #define TITANOFAIR_APP_HXX
 
-#include "api/ecs/systems/ECSystem.hxx"
+#include "api/ecs/core/ECSystem.hxx"
 
 namespace TitanOfAir
 {

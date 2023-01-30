@@ -18,8 +18,8 @@ namespace TitanOfAir::ECS
     /**
      * An abstract superclass representing an entities in the TitanOfAir ecs system.
      *
-     * Entities should be placed dynamically on the heap, so their lifetime can be managed by the game's core
-     * ecs framework.
+     * Entities should be placed dynamically on the heap, so their lifetime can be managed by the
+     * game's core ecs framework.
      */
     class Entity
     {

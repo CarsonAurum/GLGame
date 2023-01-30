@@ -25,8 +25,8 @@ namespace TitanOfAir::ECS
         void operator =(const ECSystem&);
         ~ECSystem();
 
-        std::size_t entityCount() const;
-        std::size_t componentCount() const;
+        [[nodiscard]] std::size_t entityCount() const;
+        [[nodiscard]] std::size_t componentCount() const;
 
         Response add(Entity*, Response*);
         Response remove(Entity*);
