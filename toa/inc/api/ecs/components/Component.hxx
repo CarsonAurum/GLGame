@@ -8,7 +8,6 @@
 // Libs
 #include "boost/uuid/uuid.hpp"
 #include "api/ecs/core/ECS.hxx"
-#include "boost/thread/shared_mutex.hpp"
 
 namespace TitanOfAir::ECS {
     /**

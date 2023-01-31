@@ -5,11 +5,17 @@
 #ifndef TITANOFAIR_ECS_HXX
 #define TITANOFAIR_ECS_HXX
 
-#include "boost/unordered/unordered_set.hpp"
-#include "boost/unordered/unordered_map.hpp"
+#include <boost/unordered/unordered_set.hpp>
+#include <boost/unordered/unordered_map.hpp>
+#include <boost/thread/shared_mutex.hpp>
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_generators.hpp>
 
 namespace TitanOfAir::ECS
 {
+
+    typedef boost::shared_mutex Mutex;
+
     // FWD Defs
     class Entity;
 
@@ -22,6 +28,7 @@ namespace TitanOfAir::ECS
      * An ID within the ECS system.
      */
     typedef const boost::uuids::uuid ID;
+    typedef boost::uuids::random_generator IDGenerator;
     /**
      * A tuple containing a dynamically allocated entity and its associated response.
      *

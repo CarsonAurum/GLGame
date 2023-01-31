@@ -205,3 +205,21 @@
 [submodule "lib/glad"]
 	path = lib/glad
 	url = https://github.com/CarsonAurum/glad_cmake.git
+[submodule "lib/boost/multi_array"]
+	path = lib/boost/multi_array
+	url = https://github.com/boostorg/multi_array.git
+[submodule "lib/boost/multi_index"]
+	path = lib/boost/multi_index
+	url = https://github.com/boostorg/multi_index.git
+[submodule "lib/boost/poly_collection"]
+	path = lib/boost/poly_collection
+	url = https://github.com/boostorg/poly_collection.git
+[submodule "lib/boost/property_map"]
+	path = lib/boost/property_map
+	url = https://github.com/boostorg/property_map.git
+[submodule "lib/boost/ptr_container"]
+	path = lib/boost/ptr_container
+	url = https://github.com/boostorg/ptr_container.git
+[submodule "lib/boost/test"]
+	path = lib/boost/test
+	url = https://github.com/boostorg/test.git
