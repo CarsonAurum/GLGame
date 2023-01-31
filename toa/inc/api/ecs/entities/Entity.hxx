@@ -57,7 +57,7 @@ namespace TitanOfAir::ECS {
          * @return A reference to a new entity containing a copy of all data within the given
          * Entity.
          */
-        Entity& operator=(const Entity& lhs) = default;
+        Entity& operator=(const Entity& lhs);
 
         /**
          * @brief The move assignment operator allowing relocation of an Entity.
@@ -68,7 +68,7 @@ namespace TitanOfAir::ECS {
          * @param lhs The entity to move.
          * @return A reference to a new entity containing unique access to all data from `lhs`.
          */
-        Entity& operator=(Entity&& lhs) = default;
+        Entity& operator=(Entity&& lhs) noexcept;
 
         /**
          * @brief The destructor for freeing all resources associated with this entity.

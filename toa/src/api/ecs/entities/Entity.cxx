@@ -22,7 +22,7 @@ Entity::Entity()
     this->ret = new Response{};
 }
 
-Entity::Entity(const Entity &e)
+Entity::Entity(const Entity& e)
 {
     this->id = new ID{*e.id};
     this->installed = new IDSet{*e.installed};
@@ -30,14 +30,15 @@ Entity::Entity(const Entity &e)
     this->ret = new Response{*e.ret};
 }
 
-Entity::Entity(Entity &&e) noexcept
+Entity::Entity(Entity&& e) noexcept
 {
     this->id = e.id;
     this->installed = e.installed;
     this->mut = new boost::shared_mutex{};
     this->ret = e.ret;
-    e.id = nullptr, e.installed = nullptr, e.mut = nullptr, e.ret = nullptr;
-
+    delete e.mut;
+    e.mut = new boost::shared_mutex{};
+    e.id = nullptr, e.installed = nullptr, e.ret = nullptr;
 }
 
 Entity::~Entity()
@@ -48,12 +49,34 @@ Entity::~Entity()
     delete installed;
 }
 
+Entity& Entity::operator=(const Entity& lhs)
+{
+    this->id = new ID{*lhs.id};
+    this->installed = new IDSet{*lhs.installed};
+    this->mut = new boost::shared_mutex{};
+    this->ret = new Response{*lhs.ret};
+    return *this;
+}
+
+Entity& Entity::operator=(Entity&& lhs) noexcept
+{
+    this->id = lhs.id;
+    this->installed = lhs.installed;
+    this->mut = new boost::shared_mutex{};
+    this->ret = lhs.ret;
+    delete lhs.mut;
+    lhs.mut = new boost::shared_mutex{};
+    lhs.id = nullptr, lhs.installed = nullptr, lhs.ret = nullptr;
+    return *this;
+}
+
+
 std::string Entity::getID() const
 {
     return boost::uuids::to_string(*this->id);
 }
 
-void Entity::add(Component *c)
+void Entity::add(Component* c)
 {
     this->mut->lock_upgrade();
     if (installed->contains(c->getID()))

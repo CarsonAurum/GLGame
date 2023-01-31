@@ -8,6 +8,8 @@
 // Local
 #include "app/App.hxx"
 #include "api/ecs/core/ECS.hxx"
+#include "api/ecs/components/Component.hxx"
+
 
 using namespace TitanOfAir::ECS;
 
