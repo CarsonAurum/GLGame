@@ -29,12 +29,14 @@ namespace TitanOfAir::ECS
 
         [[nodiscard]] std::string getID() const;
 
-        void add(Component* c);
+        ECResponse add(Component* c);
 
-        void remove(Component* c);
+        ECResponse remove(Component* c);
 
     protected:
-       ECData* data;
+       ID uuid;
+       Mutex componentMutex;
+       IDSet components;
     private:
         friend ECSystem;
     };

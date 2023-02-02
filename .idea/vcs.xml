@@ -34,13 +34,18 @@
     <mapping directory="$PROJECT_DIR$/lib/boost/move" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/mp11" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/mpl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/multi_array" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/multi_index" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/numeric_conversion" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/optional" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/phoenix" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/poly_collection" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/pool" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/predef" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/preprocessor" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/property_map" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/proto" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/ptr_container" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/random" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/range" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/ratio" vcs="Git" />
@@ -52,6 +57,7 @@
     <mapping directory="$PROJECT_DIR$/lib/boost/spirit" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/static_assert" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/system" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/test" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/thread" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/throw_exception" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/tokenizer" vcs="Git" />

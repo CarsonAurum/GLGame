@@ -28,7 +28,7 @@ namespace TitanOfAir::ECS
         [[nodiscard]] std::string getID();
 
     protected:
-        ECData data;
+        ECData* data;
     private:
         friend ECSystem;
     };
