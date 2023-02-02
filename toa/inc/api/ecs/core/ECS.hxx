@@ -13,9 +13,6 @@
 
 namespace TitanOfAir::ECS
 {
-
-    typedef boost::shared_mutex Mutex;
-
     // FWD Defs
     class Entity;
 
@@ -23,41 +20,25 @@ namespace TitanOfAir::ECS
 
     class Response;
 
+    class ECSystem;
+
     // ECS Typedefs
-    /**
-     * An ID within the ECS system.
-     */
     typedef const boost::uuids::uuid ID;
+    typedef boost::shared_mutex Mutex;
     typedef boost::uuids::random_generator IDGenerator;
-    /**
-     * A tuple containing a dynamically allocated entity and its associated response.
-     *
-     * Analogous to `ComponentTuple`.
-     */
-    typedef const boost::tuples::tuple<Entity *, Response *> EntityTuple;
-    /**
-     * A container relating the ID of an entity with its associated tuple.
-     *
-     * Analogous to `ComponentContainer`.
-     */
-    typedef boost::unordered::unordered_map<ID *, EntityTuple> EntityContainer;
-    /**
-     * A tuple containing a dynamically allocated component and its associated response.
-     *
-     * Analogous to `EntityTuple`.
-     */
-    typedef boost::tuples::tuple<Component *, Response *> ComponentTuple;
-    /**
-     * A container relating the ID of a component with its associated tuple.
-     *
-     * Analogous to `EntityContainer`.
-     */
-    typedef boost::unordered::unordered_map<ID *, ComponentTuple> ComponentContainer;
-    /**
-     * An unordered container of `TitanOfAir::ECS::ID` with O(1) complexity for most common
-     * operations.
-     */
-    typedef boost::unordered::unordered_set<ID *> IDSet;
+    typedef const boost::tuples::tuple<Entity, Response> EntityTuple;
+    typedef boost::unordered::unordered_map<ID*, EntityTuple> EntityContainer;
+    typedef boost::tuples::tuple<Component, Response> ComponentTuple;
+    typedef boost::unordered::unordered_map<ID*, ComponentTuple> ComponentContainer;
+    typedef boost::unordered::unordered_set<ID*> IDSet;
+
+    struct ECData
+    {
+        ID uuid;
+        Mutex mutex;
+        Response* response;
+        IDSet installed;
+    };
 }
 
 #endif //TITANOFAIR_ECS_HXX

@@ -21,22 +21,39 @@ namespace TitanOfAir::ECS
     {
     public:
         ECSystem();
-        ECSystem(ECSystem&);
-        void operator =(const ECSystem&);
+
+        ECSystem(ECSystem& copy) = delete;
+
+        ECSystem& operator=(const ECSystem& lhs) = delete;
+
+        ECSystem(ECSystem&& move) noexcept;
+
+        ECSystem& operator=(ECSystem&& lhs) noexcept;
+
         ~ECSystem();
 
         [[nodiscard]] std::size_t entityCount() const;
+
         [[nodiscard]] std::size_t componentCount() const;
 
         Response add(Entity*, Response*);
+
         Response remove(Entity*);
+
         bool has(Entity*) const;
+
         const Response* getStatus(Entity*) const;
+
         Response add(Component*, Response*);
+
         Response remove(Component*);
+
         bool has(Component*) const;
+
         const Response* getStatus(Component*) const;
+
         std::size_t clear();
+
     private:
         boost::shared_mutex* eMutex;
         EntityContainer* entities;
