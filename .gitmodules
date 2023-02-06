@@ -223,3 +223,12 @@
 [submodule "lib/boost/test"]
 	path = lib/boost/test
 	url = https://github.com/boostorg/test.git
+[submodule "lib/flecs"]
+	path = lib/flecs
+	url = https://github.com/SanderMertens/flecs.git
+[submodule "lib/behavior_tree"]
+	path = lib/behavior_tree
+	url = https://github.com/BehaviorTree/BehaviorTree.CPP.git
+[submodule "lib/boost/statechart"]
+	path = lib/boost/statechart
+	url = https://github.com/boostorg/statechart.git
