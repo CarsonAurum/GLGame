@@ -259,3 +259,12 @@
 [submodule "lib/boost/foreach"]
 	path = lib/boost/foreach
 	url = https://github.com/boostorg/foreach.git
+[submodule "lib/boost/circular_buffer"]
+	path = lib/boost/circular_buffer
+	url = https://github.com/boostorg/circular_buffer.git
+[submodule "lib/boost/type_erasure"]
+	path = lib/boost/type_erasure
+	url = https://github.com/boostorg/type_erasure.git
+[submodule "lib/boost/vmd"]
+	path = lib/boost/vmd
+	url = https://github.com/boostorg/vmd.git

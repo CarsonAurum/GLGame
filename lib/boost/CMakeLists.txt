@@ -28,6 +28,9 @@ add_subdirectory(bind)
 add_subdirectory(chrono)
     set(CHRONO_INC chrono/include)
     set(CHRONO_LIB boost_chrono)
+add_subdirectory(circular_buffer)
+    set(CIRCULAR_BUFFER_INC circular_buffer/include)
+    set(CIRCULAR_BUFFER_LIB boost_circular_buffer)
 add_subdirectory(concept_check)
     set(CONCEPT_INC concept_check/include)
     set(CONCEPT_LIB boost_concept_check)
@@ -190,9 +193,6 @@ add_subdirectory(static_assert)
 add_subdirectory(system)
     set(SYSTEM_INC system/include)
     set(SYSTEM_LIB boost_system)
-add_subdirectory(test)
-    set(TEST_INC test/include)
-    set(TEST_LIB boost_test)
 add_subdirectory(thread)
     set(THREAD_INC thread/include)
     set(THREAD_SRC boost_thread)
@@ -208,6 +208,9 @@ add_subdirectory(tti)
 add_subdirectory(tuple)
     set(TUPLE_INC tuple/include)
     set(TUPLE_SRC boost_tuple)
+add_subdirectory(type_erasure)
+    set(TYPE_ERASURE_INC type_erasure/include)
+    set(TYPE_ERASURE_LIB boost_type_erasure)
 add_subdirectory(type_index)
     set(TYPE_INDEX_INC type_index/include)
     set(TYPE_INDEX_LIB boost_type_index)
@@ -232,6 +235,9 @@ add_subdirectory(variant)
 add_subdirectory(variant2)
     set(VARIANT2_INC variant2/include)
     set(VARIANT2_LIB boost_variant2)
+add_subdirectory(vmd)
+    set(VMD_INC vmd/include)
+    set(VMD_LIb boost_vmd)
 add_subdirectory(winapi)
     set(WINAPI_INC winapi/include)
     set(WINAPI_LIB boost_winapi)
@@ -242,8 +248,8 @@ set(BOOST_INCLUDE_DIRS
 
         ${BIMAP_INC} ${BIND_INC}
 
-        ${CHRONO_INC} ${CONCEPT_CHECK_INC} ${CONFIG_INC} ${CONTAINER_INC} ${CONTAINER_HASH_INC} ${CONTEXT_INC}
-        ${CONVERSION_INC} ${CORE_INC} ${COROUTINE_INC}
+        ${CHRONO_INC} ${CIRCULAR_BUFFER_INC} ${CONCEPT_CHECK_INC} ${CONFIG_INC} ${CONTAINER_INC} ${CONTAINER_HASH_INC}
+        ${CONTEXT_INC} ${CONVERSION_INC} ${CORE_INC} ${COROUTINE_INC}
 
         ${DATE_TIME_INC} ${DESCRIBE_INC} ${DETAIL_INC} ${DYNAMIC_BITSET_INC}
 
@@ -268,12 +274,12 @@ set(BOOST_INCLUDE_DIRS
 
         ${SERIALIZATION_INC} ${SMART_PTR_INC} ${SORT_INC} ${SPIRIT_INC} ${STATECHART_INC} ${STATIC_ASSERT_INC} ${SYSTEM_INC}
 
-        ${TEST_INC} ${THREAD_INC} ${THROW_EXCEPTION_INC} ${TOKENIZER_INC} ${TTI_INC} ${TUPLE_INC} ${TYPE_INDEX_INC}
-        ${TYPE_TRAITS_INC} ${TYPEOF_INC}
+        ${THREAD_INC} ${THROW_EXCEPTION_INC} ${TOKENIZER_INC} ${TTI_INC} ${TUPLE_INC} ${TYPE_ERASURE_INC}
+        ${TYPE_INDEX_INC} ${TYPE_TRAITS_INC} ${TYPEOF_INC}
 
         ${UNORDERED_INC} ${UTILITY_INC} ${UUID_INC}
 
-        ${VARIANT_INC} ${VARIANT2_INC}
+        ${VMD_INC} ${VARIANT_INC} ${VARIANT2_INC}
 
         ${WINAPI_INC}
     PARENT_SCOPE)
@@ -282,8 +288,8 @@ set(BOOST_LIBRARIES
 
         ${BIMAP_LIB} ${BIND_LIB}
 
-        ${CHRONO_LIB} ${CONCEPT_CHECK_LIB} ${CONFIG_LIB} ${CONTAINER_LIB} ${CONTAINER_HASH_LIB} ${CONTEXT_LIB}
-        ${CONVERSION_LIB} ${CORE_LIB} ${COROUTINE_LIB}
+        ${CHRONO_LIB} ${CIRCULAR_BUFFER_LIB} ${CONCEPT_CHECK_LIB} ${CONFIG_LIB} ${CONTAINER_LIB} ${CONTAINER_HASH_LIB}
+        ${CONTEXT_LIB} ${CONVERSION_LIB} ${CORE_LIB} ${COROUTINE_LIB}
 
         ${DATE_TIME_LIB} ${DESCRIBE_LIB} ${DETAIL_LIB} ${DYNAMIC_BITSET_LIB}
 
@@ -308,12 +314,12 @@ set(BOOST_LIBRARIES
 
         ${SERIALIZATION_LIB} ${SMART_PTR_LIB} ${SORT_LIB} ${SPIRIT_LIB} ${STATECHART_LIB} ${STATIC_ASSERT_LIB} ${SYSTEM_LIB}
 
-        ${TEST_LIB} ${THREAD_LIB} ${THROW_EXCEPTION_LIB} ${TOKENIZER_LIB} ${TTI_LIB} ${TUPLE_LIB} ${TYPE_INDEX_LIB}
-        ${TYPE_TRAITS_LIB} ${TYPEOF_LIB}
+        ${THREAD_LIB} ${THROW_EXCEPTION_LIB} ${TOKENIZER_LIB} ${TTI_LIB} ${TUPLE_LIB} ${TYPE_ERASURE_LIB}
+        ${TYPE_INDEX_LIB} ${TYPE_TRAITS_LIB} ${TYPEOF_LIB}
 
         ${UNORDERED_LIB} ${UTILITY_LIB} ${UUID_LIB}
 
-        ${VARIANT_LIB} ${VARIANT2_LIB}
+        ${VMD_LIB} ${VARIANT_LIB} ${VARIANT2_LIB}
 
         ${WINAPI_LIB}
     PARENT_SCOPE)
