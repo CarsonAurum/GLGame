@@ -12,11 +12,11 @@
 
 namespace TitanOfAir::graphics
 {
-    GLFWwindow *configureGLFW();
+    GLFWwindow* configureGLFW();
 
-    void glInit(GLFWwindow *window);
+    void glInit(GLFWwindow* window);
 
-    void glDisplay(GLFWwindow *window, double time);
+    void glDisplay(GLFWwindow* window, double time);
 
     GLuint glLoadShaders();
 }

@@ -5,39 +5,43 @@
 #ifndef TITANOFAIR_APP_HXX
 #define TITANOFAIR_APP_HXX
 
+#include <flecs.h>
+
 namespace TitanOfAir
 {
     /**
-     * A class/namespace for central data to the application.
-     *
-     * This class serves as the director for the built-in ECS system.
+     * @brief A class/namespace for central data to the application.
      */
     class App
     {
     public:
         // Singleton API
         /**
-         * The `App` class is explicitly non-copyable.
+         * @brief The `App` class is explicitly non-copyable.
          */
-        App(const App &) = delete;
-        /**
-         * The `App` class is explicitly non-copyable.
-         */
-        App& operator=(const App &) = delete;
-        /**
-         * The `App` class is explicitly immovable.
-         */
-        App(App&&) = delete;
-        /**
-         * The `App` class is explicitly immovable.
-         */
-        App& operator=(App&&) = delete;
+        App(const App&) = delete;
 
         /**
-         * Access the singleton instance of this class. NO move/copy allowed.
+         * @brief The `App` class is explicitly non-copyable.
+         */
+        App& operator =(const App&) = delete;
+
+        /**
+         * @brief The `App` class is explicitly immovable.
+         */
+        App(App&&) = delete;
+
+        /**
+         * @brief The `App` class is explicitly immovable.
+         */
+        App& operator =(App&&) = delete;
+
+        /**
+         * Access the singleton instance of this class.
+         * @note NO move/copy allowed.
          * @return This class' global instance.
          */
-        static App *shared();
+        static App* shared();
 
         /**
          * Initialize this application's internal mechanisms once the game context has been loaded.
@@ -46,12 +50,30 @@ namespace TitanOfAir
         bool init();
 
         // Public Constants
-        static constexpr const char *GAME_NAME = "Titan Of Air";
-        static constexpr const char *APP_NAME = "titan_of_air";
-        static constexpr const char *LOG = "TitanOfAir";
+        /**
+         * @brief The *Pretty String* version of the game name.
+         */
+        static constexpr const char* GAME_NAME = "Titan Of Air";
+        /**
+         * @brief The *snake_case version of the game name.*
+         */
+        static constexpr const char* APP_NAME = "titan_of_air";
+        /**
+         * @brief The *PascalCase* version of the game name.
+         * @details This version of the game name can be used to access the global logger via:
+         * ```cpp
+         * spdlog::get(App::LOG)->info("Info Message.");
+         * ```
+         */
+        static constexpr const char* LOG = "TitanOfAir";
     private:
-        // Internal Usage Only
+        flecs::world airports;
+        flecs::world airplanes;
+        flecs::world company;
+        flecs::world travellers;
+
         App();
+
         ~App();
     };
 }

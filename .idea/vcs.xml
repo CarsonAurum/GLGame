@@ -15,12 +15,15 @@
     <mapping directory="$PROJECT_DIR$/lib/boost/bimap" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/bind" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/chrono" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/circular_buffer" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/concept_check" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/config" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/container" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/container_hash" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/context" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/conversion" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/core" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/coroutine" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/date_time" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/describe" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/detail" vcs="Git" />
@@ -28,6 +31,7 @@
     <mapping directory="$PROJECT_DIR$/lib/boost/endian" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/exception" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/filesystem" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/foreach" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/function" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/function_types" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/functional" vcs="Git" />
@@ -36,6 +40,7 @@
     <mapping directory="$PROJECT_DIR$/lib/boost/intrusive" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/io" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/iterator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/lambda" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/lexical_cast" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/locale" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/move" vcs="Git" />
@@ -71,6 +76,7 @@
     <mapping directory="$PROJECT_DIR$/lib/boost/tokenizer" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/tti" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/tuple" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/type_erasure" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/type_index" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/type_traits" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/typeof" vcs="Git" />
@@ -79,6 +85,7 @@
     <mapping directory="$PROJECT_DIR$/lib/boost/uuid" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/variant" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/variant2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/vmd" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/winapi" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/flecs" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/glad" vcs="Git" />

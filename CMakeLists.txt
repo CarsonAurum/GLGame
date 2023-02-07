@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.24)
-project(TitanOfAir)
+
+set(PROJECT_NAME TitanOfAir)
+
+project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -20,7 +23,8 @@ target_include_directories(TitanOfAir PRIVATE ${GLAD_INCLUDE_DIR} ${GLFW_INCLUDE
 target_include_directories(TitanOfAir PRIVATE ${GLM_INCLUDE_DIR} ${OPUS_INCLUDE_DIR} ${SPDLOG_INCLUDE_DIR})
 target_include_directories(TitanOfAir PRIVATE ${BOOST_INCLUDE_DIRS} ${BEHAVIOR_TREE_INCLUDE_DIR} ${FLECS_INCLUDE_DIR})
 
-
 if(WIN32)
 target_link_libraries(TitanOfAir PRIVATE bcrypt)
 endif()
+
+add_subdirectory(test)

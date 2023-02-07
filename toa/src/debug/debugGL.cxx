@@ -17,11 +17,11 @@ namespace TitanOfAir::utils
     {
         spdlog::get(App::LOG)->trace("Attempting to print shader log.");
         int len = 0, count = 0;
-        char *log;
+        char* log;
         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &len);
         if (len > 0)
         {
-            log = static_cast<char *>(malloc(len));
+            log = static_cast<char*>(malloc(len));
             glGetShaderInfoLog(shader, len, &count, log);
             spdlog::get(App::LOG)->debug("Shader Log: {}", log);
             free(log);
@@ -36,11 +36,11 @@ namespace TitanOfAir::utils
     {
         spdlog::get(App::LOG)->trace("Attempting to print program info log.");
         int len = 0, count = 0;
-        char *log;
+        char* log;
         glGetProgramiv(program, GL_INFO_LOG_LENGTH, &len);
         if (len > 0)
         {
-            log = static_cast<char *>(malloc(len));
+            log = static_cast<char*>(malloc(len));
             glGetProgramInfoLog(program, len, &count, log);
             spdlog::get(App::LOG)->debug("Program Info Log: {}.", log);
             free(log);
