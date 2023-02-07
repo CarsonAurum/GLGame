@@ -3,6 +3,7 @@
 //
 
 // Dependencies
+#include <memory>
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 // Local Includes
@@ -13,7 +14,6 @@ namespace TitanOfAir::logging
 {
     std::string consoleName;
     std::shared_ptr<spdlog::logger> console;
-
     void configureLoggers()
     {
         try

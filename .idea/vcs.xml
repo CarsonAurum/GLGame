@@ -2,12 +2,17 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cmake-build-debug/_deps/googletest-src" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/SOIL2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/behavior_tree" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/algorithm" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/align" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/any" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/array" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/asio" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/assert" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/atomic" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/bimap" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/bind" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/chrono" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/concept_check" vcs="Git" />
@@ -22,6 +27,7 @@
     <mapping directory="$PROJECT_DIR$/lib/boost/dynamic_bitset" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/endian" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/exception" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/filesystem" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/function" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/function_types" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/functional" vcs="Git" />
@@ -31,6 +37,7 @@
     <mapping directory="$PROJECT_DIR$/lib/boost/io" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/iterator" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/lexical_cast" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/locale" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/move" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/mp11" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/mpl" vcs="Git" />
@@ -55,6 +62,7 @@
     <mapping directory="$PROJECT_DIR$/lib/boost/smart_ptr" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/sort" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/spirit" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/boost/statechart" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/static_assert" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/system" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/test" vcs="Git" />
@@ -72,6 +80,7 @@
     <mapping directory="$PROJECT_DIR$/lib/boost/variant" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/variant2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/boost/winapi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/flecs" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/glad" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/glfw" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/glm" vcs="Git" />

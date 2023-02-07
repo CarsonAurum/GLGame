@@ -5,8 +5,6 @@
 #ifndef TITANOFAIR_APP_HXX
 #define TITANOFAIR_APP_HXX
 
-#include "api/ecs/core/ECSystem.hxx"
-
 namespace TitanOfAir
 {
     /**
@@ -18,9 +16,22 @@ namespace TitanOfAir
     {
     public:
         // Singleton API
-        App(App &) = delete;
-
-        void operator=(const App &) = delete;
+        /**
+         * The `App` class is explicitly non-copyable.
+         */
+        App(const App &) = delete;
+        /**
+         * The `App` class is explicitly non-copyable.
+         */
+        App& operator=(const App &) = delete;
+        /**
+         * The `App` class is explicitly immovable.
+         */
+        App(App&&) = delete;
+        /**
+         * The `App` class is explicitly immovable.
+         */
+        App& operator=(App&&) = delete;
 
         /**
          * Access the singleton instance of this class. NO move/copy allowed.
@@ -28,17 +39,19 @@ namespace TitanOfAir
          */
         static App *shared();
 
+        /**
+         * Initialize this application's internal mechanisms once the game context has been loaded.
+         * @return `true` if initialization was successful, `false` otherwise.
+         */
         bool init();
 
         // Public Constants
         static constexpr const char *GAME_NAME = "Titan Of Air";
         static constexpr const char *APP_NAME = "titan_of_air";
         static constexpr const char *LOG = "TitanOfAir";
-
-    protected:
+    private:
         // Internal Usage Only
         App();
-
         ~App();
     };
 }

@@ -232,3 +232,30 @@
 [submodule "lib/boost/statechart"]
 	path = lib/boost/statechart
 	url = https://github.com/boostorg/statechart.git
+[submodule "lib/boost/any"]
+	path = lib/boost/any
+	url = https://github.com/boostorg/any.git
+[submodule "lib/boost/asio"]
+	path = lib/boost/asio
+	url = https://github.com/boostorg/asio.git
+[submodule "lib/boost/locale"]
+	path = lib/boost/locale
+	url = https://github.com/boostorg/locale.git
+[submodule "lib/boost/bimap"]
+	path = lib/boost/bimap
+	url = https://github.com/boostorg/bimap.git
+[submodule "lib/boost/filesystem"]
+	path = lib/boost/filesystem
+	url = https://github.com/boostorg/filesystem.git
+[submodule "lib/boost/coroutine"]
+	path = lib/boost/coroutine
+	url = https://github.com/boostorg/coroutine.git
+[submodule "lib/boost/context"]
+	path = lib/boost/context
+	url = https://github.com/boostorg/context.git
+[submodule "lib/boost/lambda"]
+	path = lib/boost/lambda
+	url = https://github.com/boostorg/lambda.git
+[submodule "lib/boost/foreach"]
+	path = lib/boost/foreach
+	url = https://github.com/boostorg/foreach.git
