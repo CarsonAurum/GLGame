@@ -16,6 +16,8 @@ target_include_directories(${PROJECT_NAME_STRING} PRIVATE toa/inc)
 
 # Add Dependencies To Target
 add_subdirectory(lib)
+# TODO: Add Boost dependencies via find_package()
+# TODO: Make README note about boost requirements.
 target_link_libraries(${PROJECT_NAME_STRING} PRIVATE ${GLAD_LIBRARIES} ${GLFW_LIBRARIES} ${SOIL_LIBRARIES})
 target_link_libraries(${PROJECT_NAME_STRING} PRIVATE ${GLM_LIBRARIES} ${OPUS_LIBRARIES} ${SPDLOG_LIBRARIES})
 target_link_libraries(${PROJECT_NAME_STRING} PRIVATE ${BEHAVIOR_TREE_LIBRARIES} ${FLECS_LIBRARIES})
