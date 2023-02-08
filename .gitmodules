@@ -13,87 +13,12 @@
 [submodule "lib/SOIL2"]
 	path = lib/SOIL2
 	url = https://github.com/SpartanJ/SOIL2.git
-[submodule "lib/boost/uuid"]
-	path = lib/boost/uuid
-	url = https://github.com/boostorg/uuid.git
-[submodule "lib/boost/serialization"]
-	path = lib/boost/serialization
-	url = https://github.com/boostorg/serialization.git
-[submodule "lib/boost/static_assert"]
-	path = lib/boost/static_assert
-	url = https://github.com/boostorg/static_assert.git
-[submodule "lib/boost/throw_exception"]
-	path = lib/boost/throw_exception
-	url = https://github.com/boostorg/throw_exception.git
-[submodule "lib/boost/tti"]
-	path = lib/boost/tti
-	url = https://github.com/boostorg/tti.git
-[submodule "lib/boost/type_traits"]
-	path = lib/boost/type_traits
-	url = https://github.com/boostorg/type_traits.git
-[submodule "lib/boost/winapi"]
-	path = lib/boost/winapi
-	url = https://github.com/boostorg/winapi.git
-[submodule "lib/boost/smart_ptr"]
-	path = lib/boost/smart_ptr
-	url = https://github.com/boostorg/smart_ptr.git
-[submodule "lib/boost/tuple"]
-	path = lib/boost/tuple
-	url = https://github.com/boostorg/tuple.git
-[submodule "lib/boost/system"]
-	path = lib/boost/system
-	url = https://github.com/boostorg/system.git
-[submodule "lib/boost/utility"]
-	path = lib/boost/utility
-	url = https://github.com/boostorg/utility.git
-[submodule "lib/boost/typeof"]
-	path = lib/boost/typeof
-	url = https://github.com/boostorg/typeof.git
-[submodule "lib/boost/type_index"]
-	path = lib/boost/type_index
-	url = https://github.com/boostorg/type_index.git
-[submodule "lib/boost/regex"]
-	path = lib/boost/regex
-	url = https://github.com/boostorg/regex.git
-[submodule "lib/boost/spirit"]
-	path = lib/boost/spirit
-	url = https://github.com/boostorg/spirit.git
-[submodule "lib/boost/unordered"]
-	path = lib/boost/unordered
-	url = https://github.com/boostorg/unordered.git
-[submodule "lib/boost/variant"]
-	path = lib/boost/variant
-	url = https://github.com/boostorg/variant.git
-[submodule "lib/boost/thread"]
-	path = lib/boost/thread
-	url = https://github.com/boostorg/thread.git
-[submodule "lib/boost/variant2"]
-	path = lib/boost/variant2
-	url = https://github.com/boostorg/variant2.git
-[submodule "lib/boost/tokenizer"]
-	path = lib/boost/tokenizer
-	url = https://github.com/boostorg/tokenizer.git
-[submodule "lib/boost/sort"]
-	path = lib/boost/sort
-	url = https://github.com/boostorg/sort.git
 [submodule "lib/glad"]
 	path = lib/glad
 	url = https://github.com/CarsonAurum/glad_cmake.git
-[submodule "lib/boost/test"]
-	path = lib/boost/test
-	url = https://github.com/boostorg/test.git
 [submodule "lib/flecs"]
 	path = lib/flecs
 	url = https://github.com/SanderMertens/flecs.git
 [submodule "lib/behavior_tree"]
 	path = lib/behavior_tree
 	url = https://github.com/BehaviorTree/BehaviorTree.CPP.git
-[submodule "lib/boost/statechart"]
-	path = lib/boost/statechart
-	url = https://github.com/boostorg/statechart.git
-[submodule "lib/boost/type_erasure"]
-	path = lib/boost/type_erasure
-	url = https://github.com/boostorg/type_erasure.git
-[submodule "lib/boost/vmd"]
-	path = lib/boost/vmd
-	url = https://github.com/boostorg/vmd.git
