@@ -2,10 +2,6 @@ add_subdirectory(behavior_tree)
 set(BEHAVIOR_TREE_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/behavior_tree/include PARENT_SCOPE)
 set(BEHAVIOR_TREE_LIBRARIES behaviortree_cpp PARENT_SCOPE)
 
-add_subdirectory(boost)
-set(BOOST_INCLUDE_DIRS ${BOOST_INCLUDE_DIRS} PARENT_SCOPE)
-set(BOOST_LIBRARIES ${BOOST_LIBRARIES} PARENT_SCOPE)
-
 add_subdirectory(flecs)
 set(FLECS_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/flecs/include PARENT_SCOPE)
 set(FLECS_LIBRARIES flecs PARENT_SCOPE)
