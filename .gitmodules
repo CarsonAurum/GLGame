@@ -16,24 +16,6 @@
 [submodule "lib/boost/uuid"]
 	path = lib/boost/uuid
 	url = https://github.com/boostorg/uuid.git
-[submodule "lib/boost/core"]
-	path = lib/boost/core
-	url = https://github.com/boostorg/core.git
-[submodule "lib/boost/assert"]
-	path = lib/boost/assert
-	url = https://github.com/boostorg/assert.git
-[submodule "lib/boost/config"]
-	path = lib/boost/config
-	url = https://github.com/boostorg/config.git
-[submodule "lib/boost/container"]
-	path = lib/boost/container
-	url = https://github.com/boostorg/container.git
-[submodule "lib/boost/container_hash"]
-	path = lib/boost/container_hash
-	url = https://github.com/boostorg/container_hash.git
-[submodule "lib/boost/exception"]
-	path = lib/boost/exception
-	url = https://github.com/boostorg/exception.git
 [submodule "lib/boost/io"]
 	path = lib/boost/io
 	url = https://github.com/boostorg/io.git
@@ -73,9 +55,6 @@
 [submodule "lib/boost/winapi"]
 	path = lib/boost/winapi
 	url = https://github.com/boostorg/winapi.git
-[submodule "lib/boost/describe"]
-	path = lib/boost/describe
-	url = https://github.com/boostorg/describe.git
 [submodule "lib/boost/mp11"]
 	path = lib/boost/mp11
 	url = https://github.com/boostorg/mp11.git
@@ -85,12 +64,6 @@
 [submodule "lib/boost/tuple"]
 	path = lib/boost/tuple
 	url = https://github.com/boostorg/tuple.git
-[submodule "lib/boost/array"]
-	path = lib/boost/array
-	url = https://github.com/boostorg/array.git
-[submodule "lib/boost/dynamic_bitset"]
-	path = lib/boost/dynamic_bitset
-	url = https://github.com/boostorg/dynamic_bitset.git
 [submodule "lib/boost/integer"]
 	path = lib/boost/integer
 	url = https://github.com/boostorg/integer.git
@@ -103,18 +76,9 @@
 [submodule "lib/boost/utility"]
 	path = lib/boost/utility
 	url = https://github.com/boostorg/utility.git
-[submodule "lib/boost/concept_check"]
-	path = lib/boost/concept_check
-	url = https://github.com/boostorg/concept_check.git
-[submodule "lib/boost/conversion"]
-	path = lib/boost/conversion
-	url = https://github.com/boostorg/conversion.git
 [submodule "lib/boost/typeof"]
 	path = lib/boost/typeof
 	url = https://github.com/boostorg/typeof.git
-[submodule "lib/boost/detail"]
-	path = lib/boost/detail
-	url = https://github.com/boostorg/detail.git
 [submodule "lib/boost/iterator"]
 	path = lib/boost/iterator
 	url = https://github.com/boostorg/iterator.git
@@ -133,9 +97,6 @@
 [submodule "lib/boost/function"]
 	path = lib/boost/function
 	url = https://github.com/boostorg/function.git
-[submodule "lib/boost/bind"]
-	path = lib/boost/bind
-	url = https://github.com/boostorg/bind.git
 [submodule "lib/boost/type_index"]
 	path = lib/boost/type_index
 	url = https://github.com/boostorg/type_index.git
@@ -154,9 +115,6 @@
 [submodule "lib/boost/variant"]
 	path = lib/boost/variant
 	url = https://github.com/boostorg/variant.git
-[submodule "lib/boost/endian"]
-	path = lib/boost/endian
-	url = https://github.com/boostorg/endian.git
 [submodule "lib/boost/phoenix"]
 	path = lib/boost/phoenix
 	url = https://github.com/boostorg/phoenix.git
@@ -172,27 +130,12 @@
 [submodule "lib/boost/variant2"]
 	path = lib/boost/variant2
 	url = https://github.com/boostorg/variant2.git
-[submodule "lib/boost/atomic"]
-	path = lib/boost/atomic
-	url = https://github.com/boostorg/atomic.git
-[submodule "lib/boost/align"]
-	path = lib/boost/align
-	url = https://github.com/boostorg/align.git
-[submodule "lib/boost/chrono"]
-	path = lib/boost/chrono
-	url = https://github.com/boostorg/chrono.git
 [submodule "lib/boost/ratio"]
 	path = lib/boost/ratio
 	url = https://github.com/boostorg/ratio.git
 [submodule "lib/boost/rational"]
 	path = lib/boost/rational
 	url = https://github.com/boostorg/rational.git
-[submodule "lib/boost/date_time"]
-	path = lib/boost/date_time
-	url = https://github.com/boostorg/date_time.git
-[submodule "lib/boost/algorithm"]
-	path = lib/boost/algorithm
-	url = https://github.com/boostorg/algorithm.git
 [submodule "lib/boost/lexical_cast"]
 	path = lib/boost/lexical_cast
 	url = https://github.com/boostorg/lexical_cast.git
@@ -232,36 +175,12 @@
 [submodule "lib/boost/statechart"]
 	path = lib/boost/statechart
 	url = https://github.com/boostorg/statechart.git
-[submodule "lib/boost/any"]
-	path = lib/boost/any
-	url = https://github.com/boostorg/any.git
-[submodule "lib/boost/asio"]
-	path = lib/boost/asio
-	url = https://github.com/boostorg/asio.git
 [submodule "lib/boost/locale"]
 	path = lib/boost/locale
 	url = https://github.com/boostorg/locale.git
-[submodule "lib/boost/bimap"]
-	path = lib/boost/bimap
-	url = https://github.com/boostorg/bimap.git
-[submodule "lib/boost/filesystem"]
-	path = lib/boost/filesystem
-	url = https://github.com/boostorg/filesystem.git
-[submodule "lib/boost/coroutine"]
-	path = lib/boost/coroutine
-	url = https://github.com/boostorg/coroutine.git
-[submodule "lib/boost/context"]
-	path = lib/boost/context
-	url = https://github.com/boostorg/context.git
 [submodule "lib/boost/lambda"]
 	path = lib/boost/lambda
 	url = https://github.com/boostorg/lambda.git
-[submodule "lib/boost/foreach"]
-	path = lib/boost/foreach
-	url = https://github.com/boostorg/foreach.git
-[submodule "lib/boost/circular_buffer"]
-	path = lib/boost/circular_buffer
-	url = https://github.com/boostorg/circular_buffer.git
 [submodule "lib/boost/type_erasure"]
 	path = lib/boost/type_erasure
 	url = https://github.com/boostorg/type_erasure.git
