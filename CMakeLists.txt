@@ -12,10 +12,6 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
-# Project Sources + Headers
-add_subdirectory(toa/inc)
-add_subdirectory(toa/src)
-
 # Libraries
 add_subdirectory(lib)
 find_package(Boost COMPONENTS filesystem REQUIRED)
@@ -47,6 +43,10 @@ include_directories(
 if(WIN32)
     link_libraries(bcrypt)
 endif()
+
+# Project Sources + Headers
+add_subdirectory(toa/inc)
+add_subdirectory(toa/src)
 
 # Declare Deliverable
 add_executable(${PROJECT_NAME_STRING} ${TOA_HEADERS} ${TOA_SRCS})

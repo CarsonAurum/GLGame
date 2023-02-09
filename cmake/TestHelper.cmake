@@ -1,6 +1,5 @@
 #
-# Create an executable test from a source file. The associate executable has the same
-# name as the source file.
+# Create an executable test from a source file. The generated executable has the same name as the source file.
 #
 # Usage:
 #   add_boost_test(SOURCE <source>
@@ -8,18 +7,16 @@
 #                [LINK [items1...]
 #                [PREFIX <string>])
 #
-# SOURCE is the source file contaning the test
-# INCLUDE is an optional list of include directories
-# LINK is an optional list of targets/libraries to link with
-# PREFIX is an optional string to append to the name of the test (e.g. the module name)
-#     For example if foo.cpp is passed as source, and "bar" as PREFIX the executable
-#     will be named named "bar_foo". Without PREFIX it will be just "foo"
+# SOURCE:   The source file containing the test.
+# INCLUDE:  An optional list of include directories
+# LINK:     An optional list of targets/libraries to link with
+# PREFIX:   An optional string to append to the name of the test (e.g. the module name)
+#           If foo.cpp is passed as source, and "bar" as PREFIX the executable will be named named "bar_foo".
+#           Without PREFIX it will be just "foo"
 #
-# The function parses each test file and extract the BOOST_AUTO_TEST_SUITEs so
-# that each suite is run and visualised as a separated test. This means that no
-# BOOST_AUTO_TEST_CASE must be left outside the suite or it will not be run during make test
-#
-# Function based on https://eb2.co/blog/2015/06/driving-boost-dot-test-with-cmake/
+# This function parses each test file and extract the BOOST_AUTO_TEST_SUITEs so that each suite is run and visualised as
+# a separate test. This means that no BOOST_AUTO_TEST_CASE must be left outside the suite or it will not be run during
+# make test
 #
 function(add_boost_test)
 

@@ -11,4 +11,8 @@ BOOST_AUTO_TEST_SUITE(test_main)
     {
         BOOST_TEST(true);
     }
+    BOOST_AUTO_TEST_CASE(second_test)
+    {
+        BOOST_TEST(true);
+    }
 BOOST_AUTO_TEST_SUITE_END()
