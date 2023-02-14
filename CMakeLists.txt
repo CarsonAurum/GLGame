@@ -17,29 +17,10 @@ add_subdirectory(lib)
 find_package(Boost COMPONENTS filesystem REQUIRED)
 if (BUILD_TESTS)
     find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+    enable_testing()
 endif()
-link_libraries(
-        ${BEHAVIOR_TREE_LIBRARIES}
-        ${Boost_LIBRARIES}
-        ${FLECS_LIBRARIES}
-        ${GLAD_LIBRARIES}
-        ${GLFW_LIBRARIES}
-        ${GLM_LIBRARIES}
-        ${OPUS_LIBRARIES}
-        ${SOIL_LIBRARIES}
-        ${SPDLOG_LIBRARIES}
-)
-include_directories(
-        ${BEHAVIOR_TREE_INCLUDE_DIR}
-        ${Boost_INCLUDE_DIRS}
-        ${FLECS_INCLUDE_DIR}
-        ${GLAD_INCLUDE_DIR}
-        ${GLFW_INCLUDE_DIR}
-        ${GLM_INCLUDE_DIR}
-        ${OPUS_INCLUDE_DIR}
-        ${SOIL_INCLUDE_DIR}
-        ${SPDLOG_INCLUDE_DIR}
-)
+link_libraries(${LIB_SRCS} ${Boost_LIBRARIES})
+include_directories(${LIB_INCS} ${Boost_INCLUDE_DIRS})
 if(WIN32)
     link_libraries(bcrypt)
 endif()

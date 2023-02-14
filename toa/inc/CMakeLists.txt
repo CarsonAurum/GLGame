@@ -1,12 +1,6 @@
-file(GLOB API_HEADERS
-        api/*.hxx
-        api/ecs/components/*.hxx
-        api/ecs/core/*.hxx
-        api/ecs/entites/*.hxx
-        api/ecs/systems/*.hxx)
-file(GLOB APP_HEADERS
-        app/*.hxx)
-file(GLOB DEBUG_HEADERS
-        debug/*.hxx)
+add_subdirectory(api)
+add_subdirectory(app)
+add_subdirectory(debug)
 
-set(TOA_HEADERS ${API_HEADERS} ${APP_HEADERS} ${DEBUG_HEADERS} PARENT_SCOPE)
+set(TOA_HEADERS ${TOA_HEADERS} PARENT_SCOPE)
+# message("Headers: ${TOA_HEADERS}")

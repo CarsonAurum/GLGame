@@ -1,0 +1,5 @@
+set(DEBUG_SRCS
+        ${CMAKE_CURRENT_SOURCE_DIR}/debugGL.cxx
+        ${CMAKE_CURRENT_SOURCE_DIR}/Logging.cxx)
+
+set(TOA_SRCS ${TOA_SRCS} ${DEBUG_SRCS} PARENT_SCOPE)

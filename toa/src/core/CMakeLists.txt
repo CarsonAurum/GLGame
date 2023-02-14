@@ -1,0 +1,4 @@
+set(CORE_SRCS
+        ${CMAKE_CURRENT_SOURCE_DIR}/main.cxx)
+
+set(TOA_SRCS ${TOA_SRCS} ${CORE_SRCS} PARENT_SCOPE)
